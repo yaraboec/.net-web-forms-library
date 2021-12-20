@@ -152,6 +152,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.background);
             this.Controls.Add(this.toolStrip1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BookAuthor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

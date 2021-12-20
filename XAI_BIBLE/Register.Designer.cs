@@ -219,6 +219,8 @@
             this.Text = "Register";
             this.Load += new System.EventHandler(this.Register_Load);
             this.Shown += new System.EventHandler(this.Register_Shown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Register_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Register_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Avatar)).EndInit();
             this.toolStrip1.ResumeLayout(false);
