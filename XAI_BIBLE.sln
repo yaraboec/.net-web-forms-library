@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XAI_BIBLE", "XAI_BIBLE\XAI_BIBLE.csproj", "{05C917B4-ADF6-4AE6-A8B1-57ACAEAA0C69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{455F4010-3556-40BE-B607-7314BB7C98C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{52921805-CEF2-488F-9407-60E771274028}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05C917B4-ADF6-4AE6-A8B1-57ACAEAA0C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C917B4-ADF6-4AE6-A8B1-57ACAEAA0C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C917B4-ADF6-4AE6-A8B1-57ACAEAA0C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C917B4-ADF6-4AE6-A8B1-57ACAEAA0C69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455F4010-3556-40BE-B607-7314BB7C98C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455F4010-3556-40BE-B607-7314BB7C98C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455F4010-3556-40BE-B607-7314BB7C98C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455F4010-3556-40BE-B607-7314BB7C98C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52921805-CEF2-488F-9407-60E771274028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52921805-CEF2-488F-9407-60E771274028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52921805-CEF2-488F-9407-60E771274028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52921805-CEF2-488F-9407-60E771274028}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A99CF98-734E-43F7-BAC9-9CF5F14019AE}
+	EndGlobalSection
+EndGlobal
