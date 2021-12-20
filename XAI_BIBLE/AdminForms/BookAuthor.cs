@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using XAI_BIBLE.AdminForms.EditorAdminForms;
 
 namespace XAI_BIBLE.AdminForms
 {
@@ -23,6 +24,11 @@ namespace XAI_BIBLE.AdminForms
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            BookAuthorEditor bookAuthorEditor = new BookAuthorEditor();
         }
     }
 }

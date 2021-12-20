@@ -186,6 +186,12 @@
     <Compile Include="AdminForms\Discipline.Designer.cs">
       <DependentUpon>Discipline.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\BookAuthorEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\BookAuthorEditor.Designer.cs">
+      <DependentUpon>BookAuthorEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\EducationalProgram.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\Discipline.resx">
       <DependentUpon>Discipline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\EditorAdminForms\BookAuthorEditor.resx">
+      <DependentUpon>BookAuthorEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\EducationalProgram.resx">
       <DependentUpon>EducationalProgram.cs</DependentUpon>
