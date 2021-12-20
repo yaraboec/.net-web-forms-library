@@ -29,6 +29,8 @@ namespace XAI_BIBLE.AdminForms
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             BookAuthorEditor bookAuthorEditor = new BookAuthorEditor();
+
+            bookAuthorEditor.Show();
         }
     }
 }
