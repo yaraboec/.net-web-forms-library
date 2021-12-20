@@ -162,6 +162,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForms\BookAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\BookAuthor.Designer.cs">
+      <DependentUpon>BookAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\BookName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\BookName.Designer.cs">
+      <DependentUpon>BookName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\BookType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\BookType.Designer.cs">
+      <DependentUpon>BookType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\Discipline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\Discipline.Designer.cs">
+      <DependentUpon>Discipline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\EducationalProgram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\EducationalProgram.Designer.cs">
+      <DependentUpon>EducationalProgram.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\Language.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\Language.Designer.cs">
+      <DependentUpon>Language.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\PublicationPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\PublicationPlan.Designer.cs">
+      <DependentUpon>PublicationPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dataview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +224,27 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminForms\BookAuthor.resx">
+      <DependentUpon>BookAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\BookName.resx">
+      <DependentUpon>BookName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\BookType.resx">
+      <DependentUpon>BookType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\Discipline.resx">
+      <DependentUpon>Discipline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\EducationalProgram.resx">
+      <DependentUpon>EducationalProgram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\Language.resx">
+      <DependentUpon>Language.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\PublicationPlan.resx">
+      <DependentUpon>PublicationPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dataview.resx">
       <DependentUpon>Dataview.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +300,7 @@
     <Content Include="Resources\unnamed.gif" />
     <Content Include="Resources\word.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
