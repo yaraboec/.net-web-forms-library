@@ -37,6 +37,8 @@ namespace DataAccess.Repositories.PublicationPlanRepository
         public IEnumerable<PublicationPlan> GetAll()
         {
             return _dbSet.Include(bookName => bookName.BookName)
+                .Include(bookauthor => bookauthor.BookAuthor)
+                .Include(educatuinprogramm => educatuinprogramm.EducationalProgram)
                 .Include(speciality => speciality.Speciality)
                 .Include(discipline => discipline.Discipline)
                 .Include(language => language.Language)
@@ -48,6 +50,9 @@ namespace DataAccess.Repositories.PublicationPlanRepository
         public PublicationPlan GetById(Guid id)
         {
             return _dbSet.Where(record => record.Id == id)
+                .Include(bookName => bookName.BookName)
+                .Include(bookauthor => bookauthor.BookAuthor)
+                .Include(educatuinprogramm => educatuinprogramm.EducationalProgram)
                 .Include(speciality => speciality.Speciality)
                 .Include(discipline => discipline.Discipline)
                 .Include(language => language.Language)

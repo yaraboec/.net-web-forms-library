@@ -1,6 +1,7 @@
 ﻿using System;
 using XAI_BIBLE.AdminForms;
 using System.Windows.Forms;
+using XAI_BIBLE.AdminForms;
 
 namespace XAI_BIBLE
 {
