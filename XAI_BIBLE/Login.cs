@@ -176,7 +176,7 @@ namespace XAI_BIBLE
             var login = txtBox_Login.Text;
             var password = txtBox_Password.Text;
 
-            var user = _service.GetById(new Guid("4B5E92CB-D1B4-49D3-108E-08D9C33352D8"));
+            // var user = _service.GetById(new Guid("4B5E92CB-D1B4-49D3-108E-08D9C33352D8"));
 
             if (txtBox_Login.Text == "admin" && txtBox_Password.Text == "admin")
             {
@@ -189,6 +189,22 @@ namespace XAI_BIBLE
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        Point lastPoint;
+
+        private void Login_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void Login_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
         }
     }
 }
