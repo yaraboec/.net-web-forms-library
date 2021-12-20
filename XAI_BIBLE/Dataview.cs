@@ -44,5 +44,30 @@ namespace XAI_BIBLE
         {
 
         }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Dataview_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        Point lastPoint;
+
+        private void Dataview_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void Dataview_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
     }
 }

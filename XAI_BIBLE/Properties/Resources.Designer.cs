@@ -83,6 +83,16 @@ namespace XAI_BIBLE.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("edit-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap excel {
             get {
                 object obj = ResourceManager.GetObject("excel", resourceCulture);

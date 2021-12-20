@@ -256,6 +256,8 @@
             this.Text = "Авторизація";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
