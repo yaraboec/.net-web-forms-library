@@ -54,7 +54,7 @@
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(677, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(612, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -80,7 +80,7 @@
             this.background.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.background.Location = new System.Drawing.Point(28, 34);
             this.background.Name = "background";
-            this.background.Size = new System.Drawing.Size(622, 492);
+            this.background.Size = new System.Drawing.Size(553, 224);
             this.background.TabIndex = 46;
             this.background.TabStop = false;
             // 
@@ -103,9 +103,9 @@
             this.Column6,
             this.Column4,
             this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(62, 68);
+            this.dataGridView1.Location = new System.Drawing.Point(28, 34);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(553, 426);
+            this.dataGridView1.Size = new System.Drawing.Size(553, 224);
             this.dataGridView1.TabIndex = 47;
             // 
             // Column1
@@ -152,7 +152,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
-            this.ClientSize = new System.Drawing.Size(677, 561);
+            this.ClientSize = new System.Drawing.Size(612, 282);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.background);
             this.Controls.Add(this.toolStrip1);

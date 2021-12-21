@@ -1,5 +1,7 @@
 ﻿using System;
+using XAI_BIBLE.AdminForms;
 using System.Windows.Forms;
+using XAI_BIBLE.AdminForms;
 
 namespace XAI_BIBLE
 {
@@ -10,7 +12,7 @@ namespace XAI_BIBLE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new BookAuthor());
         }
     }
 }
