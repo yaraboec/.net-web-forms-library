@@ -36,12 +36,11 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.background = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.Column_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -54,7 +53,7 @@
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(508, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(409, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -82,7 +81,7 @@
             this.background.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.background.Location = new System.Drawing.Point(28, 34);
             this.background.Name = "background";
-            this.background.Size = new System.Drawing.Size(453, 410);
+            this.background.Size = new System.Drawing.Size(354, 410);
             this.background.TabIndex = 46;
             this.background.TabStop = false;
             // 
@@ -102,41 +101,12 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4,
-            this.Column5});
+            this.Column_Id});
             this.dataGridView1.Location = new System.Drawing.Point(28, 34);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(453, 410);
+            this.dataGridView1.Size = new System.Drawing.Size(354, 410);
             this.dataGridView1.TabIndex = 47;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Ім\'я";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 110;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Фамілія";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "По батькові";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 50;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 50;
             // 
             // imageList1
             // 
@@ -145,12 +115,37 @@
             this.imageList1.Images.SetKeyName(0, "outline_settings_suggest_black_24dp.png");
             this.imageList1.Images.SetKeyName(1, "outline_delete_black_24dp.png");
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Ім\'я";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 110;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Фамілія";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "По батькові";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column_Id
+            // 
+            this.Column_Id.HeaderText = "Id";
+            this.Column_Id.Name = "Column_Id";
+            this.Column_Id.Visible = false;
+            // 
             // BookAuthor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
-            this.ClientSize = new System.Drawing.Size(508, 469);
+            this.ClientSize = new System.Drawing.Size(409, 469);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.background);
             this.Controls.Add(this.toolStrip1);
@@ -180,7 +175,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Id;
     }
 }

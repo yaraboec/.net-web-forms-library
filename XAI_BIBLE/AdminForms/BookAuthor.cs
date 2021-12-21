@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,10 +33,9 @@ namespace XAI_BIBLE.AdminForms
         {
             List<DataAccess.Entities.BookAuthor> bookAuthors = new List<DataAccess.Entities.BookAuthor>();
             bookAuthors = _service.GetAll().ToList();
-
             foreach (var author in bookAuthors)
             {
-                dataGridView1.Rows.Add(author.Name, author.MiddleName, author.Surname);
+                dataGridView1.Rows.Add(author.Name, author.MiddleName, author.Surname, author.Id);
             }
         }
 
@@ -54,7 +54,30 @@ namespace XAI_BIBLE.AdminForms
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            ArrayList values = new ArrayList();
+            for(var i = 0; i < dataGridView1.Rows[e.RowIndex].Cells.Count; i++)
+            {
+                values.Add(dataGridView1.Rows[e.RowIndex].Cells[i].Value.ToString());
+            }
 
+            BookAuthorEditor bookAuthorEditor = new BookAuthorEditor();
+
+            bookAuthorEditor.setData(values[0].ToString(), values[1].ToString(), values[2].ToString(), Guid.Parse(values[3].ToString()));
+
+            bookAuthorEditor.Show();
+            this.Hide();
+
+        }
+        public string message = string.Empty;
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+               foreach (DataGridViewCell cell in row.Cells)
+                {
+                    var value = cell.Value.ToString();
+                }
+            }
         }
     }
 }
