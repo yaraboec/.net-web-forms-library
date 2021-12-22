@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DataAccess.Context;
 using DataAccess.Repositories;
@@ -63,5 +64,32 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                 this.Close();
             }
         }
+
+        Point lastPoint;
+
+        private void DisciplineEditor_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void DisciplineEditor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.LightSkyBlue;
+        }
+
     }
 }

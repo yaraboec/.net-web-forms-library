@@ -1,134 +1,141 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using DataAccess.Entities;
-//using DataAccess.Repositories;
-//using Moq;
-//using NUnit.Framework;
-//using Services.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using DataAccess.Entities;
+using DataAccess.Repositories.UserRepository;
+using Moq;
+using NUnit.Framework;
+using Services.Contracts;
+using Services.Services;
 
-//namespace UnitTests
-//{
-//    public class UserTests
-//    {
-//        private static Guid ExistingId = Guid.NewGuid();
-//        private static Guid NonExistingId = Guid.NewGuid();
+namespace UnitTests
+{
+    public class UserTests
+    {
+        private static Guid ExistingId = Guid.NewGuid();
+        private static Guid NonExistingId = Guid.NewGuid();
+        private static string _userName = "admin";
+        private static string _nonUserName = "inkognito";
 
-//        private readonly User _entity = new User()
-//        {
-//            Id = ExistingId
-//        };
+        private readonly User _entity = new User()
+        {
+            Id = ExistingId
+        };
 
-//        private readonly User _nonExistingEntity = new User()
-//        {
-//            Id = NonExistingId
-//        };
+        private readonly User _nonExistingEntity = new User()
+        {
+            Id = NonExistingId
+        };
 
-//        private readonly IEnumerable<User> _entities = new List<User>()
-//        {
-//            new User()
-//            {
-//                Id = ExistingId
-//            }
-//        };
+        private readonly User _entityFounded = new User()
+        {
+            Username = _userName
+        };
 
-//        private Mock<ISqlRepository<User>> _iSqlRepository;
+        private readonly IEnumerable<User> _entities = new List<User>()
+        {
+            new User()
+            {
+                Id = ExistingId
+            }
+        };
 
-//        private UserService _service;
+        private Mock<IUserRepository> _iSqlRepository;
 
-//        [SetUp]
-//        public void Setup()
-//        {
-//            _iSqlRepository = new Mock<ISqlRepository<User>>();
+        private IUserService _service;
 
-//            _service = new UserService(_iSqlRepository.Object);
-//        }
+        [SetUp]
+        public void Setup()
+        {
+            _iSqlRepository = new Mock<IUserRepository>();
 
-//        [Test]
-//        public void GetById_ExistingId_ReturnsEntity()
-//        {
-//            _iSqlRepository.Setup(x => x.GetById(ExistingId)).Returns(_entity);
+            _service = new UserService(_iSqlRepository.Object);
+        }
 
-//            var entity = _service.GetById(ExistingId);
+        [Test]
+        public void GetById_ExistingId_ReturnsEntity()
+        {
+            _iSqlRepository.Setup(x => x.GetByUsername(_userName)).Returns(_entityFounded);
 
-//            Assert.AreEqual(entity, _entity);
-//        }
+            var entity = _service.GetByUsername(_userName);
 
-//        [Test]
-//        public void GetById_NonExistingId_ReturnsNull()
-//        {
-//            _iSqlRepository.Setup(x => x.GetById(ExistingId))
-//                .Returns((User)null);
+            Assert.AreEqual(entity, _entityFounded);
+        }
 
-//            var entity = _service.GetById(NonExistingId);
+        [Test]
+        public void GetById_NonExistingId_ReturnsNull()
+        {
+            _iSqlRepository.Setup(x => x.GetByUsername(_nonUserName))
+                .Returns((User)null);
 
-//            Assert.IsNull(entity);
-//        }
+            var entity = _service.GetByUsername(_nonUserName);
 
-//        [Test]
-//        public void GetAll_IEnumerableOfEntities_ReturnsIEnumerable()
-//        {
-//            _iSqlRepository.Setup(x => x.GetAll())
-//                .Returns(_entities.AsEnumerable());
+            Assert.IsNull(entity);
+        }
 
-//            var entity = _service.GetAll();
+        [Test]
+        public void GetAll_IEnumerableOfEntities_ReturnsIEnumerable()
+        {
+            _iSqlRepository.Setup(x => x.GetAll())
+                .Returns(_entities.AsEnumerable());
 
-//            Assert.AreEqual(entity, _entities.AsEnumerable());
-//        }
+            var entity = _service.GetAll();
 
-//        [Test]
-//        public void Create_CreateEntity_ReturnsEntity()
-//        {
-//            _iSqlRepository.Setup(x => x.Create(_entity))
-//               .Returns(_entity);
+            Assert.AreEqual(entity, _entities.AsEnumerable());
+        }
 
-//            var entity = _service.Create(_entity);
+        [Test]
+        public void Create_CreateEntity_ReturnsEntity()
+        {
+            _iSqlRepository.Setup(x => x.Create(_entity))
+               .Returns(_entity);
 
-//            Assert.AreEqual(entity, _entity);
-//        }
+            var entity = _service.Create(_entity);
 
-//        [Test]
-//        public void Update_ExistingEntity_ReturnsEntity()
-//        {
-//            _iSqlRepository.Setup(x => x.Update(_entity))
-//                .Returns(_entity);
+            Assert.AreEqual(entity, _entity);
+        }
 
-//            var entity = _service.Update(_entity);
+        [Test]
+        public void Update_ExistingEntity_ReturnsEntity()
+        {
+            _iSqlRepository.Setup(x => x.Update(_entity))
+                .Returns(_entity);
 
-//            Assert.AreEqual(entity, _entity);
-//        }
+            var entity = _service.Update(_entity);
 
-//        [Test]
-//        public void Update_NonExistingEntity_ReturnsNull()
-//        {
-//            _iSqlRepository.Setup(x => x.Update(_nonExistingEntity))
-//                .Returns((User)null);
+            Assert.AreEqual(entity, _entity);
+        }
 
-//            var entity = _service.Update(_nonExistingEntity);
+        [Test]
+        public void Update_NonExistingEntity_ReturnsNull()
+        {
+            _iSqlRepository.Setup(x => x.Update(_nonExistingEntity))
+                .Returns((User)null);
 
-//            Assert.IsNull(entity);
-//        }
+            var entity = _service.Update(_nonExistingEntity);
 
-//        [Test]
-//        public void Delete_ExistingId_ReturnsEntity()
-//        {
-//            _iSqlRepository.Setup(x => x.Delete(ExistingId))
-//                .Returns(_entity);
+            Assert.IsNull(entity);
+        }
 
-//            var entity = _service.Delete(ExistingId);
+        [Test]
+        public void Delete_ExistingId_ReturnsEntity()
+        {
+            _iSqlRepository.Setup(x => x.Delete(_userName)).Returns(_entityFounded);
 
-//            Assert.AreEqual(entity, _entity);
-//        }
+            var entity = _service.Delete(_userName);
 
-//        [Test]
-//        public void Delete_NonExistingId_ReturnsNull()
-//        {
-//            _iSqlRepository.Setup(x => x.Delete(NonExistingId))
-//                .Returns((User)null);
+            Assert.AreEqual(entity, _entityFounded);
+        }
 
-//            var entity = _service.Delete(NonExistingId);
+        [Test]
+        public void Delete_NonExistingId_ReturnsNull()
+        {
+            _iSqlRepository.Setup(x => x.Delete(_nonUserName))
+                .Returns((User)null);
 
-//            Assert.IsNull(entity);
-//        }
-//    }
-//}
+            var entity = _service.Delete(_nonUserName);
+
+            Assert.IsNull(entity);
+        }
+    }
+}

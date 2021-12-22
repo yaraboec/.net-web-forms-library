@@ -36,11 +36,11 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.background = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -107,13 +107,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(626, 410);
             this.dataGridView1.TabIndex = 47;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "outline_settings_suggest_black_24dp.png");
-            this.imageList1.Images.SetKeyName(1, "outline_delete_black_24dp.png");
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -139,6 +133,13 @@
             this.Column_Id.HeaderText = "Id";
             this.Column_Id.Name = "Column_Id";
             this.Column_Id.Visible = false;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "outline_settings_suggest_black_24dp.png");
+            this.imageList1.Images.SetKeyName(1, "outline_delete_black_24dp.png");
             // 
             // BookAuthor
             // 
