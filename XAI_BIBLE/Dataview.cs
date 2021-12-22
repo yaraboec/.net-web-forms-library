@@ -2,6 +2,8 @@
 using System.Drawing;
 using XAI_BIBLE.AdminForms;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace XAI_BIBLE
 {
@@ -127,6 +129,83 @@ namespace XAI_BIBLE
             {
                 printDocument1.DocumentName = "Друкування";
                 printDocument1.Print();
+            }
+        }
+
+        private void excelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Documents (*.xls)|*.xls";
+            sfd.FileName = "Inventory_Adjustment_Export.xls";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+
+                copyAlltoClipboard();
+
+                object misValue = System.Reflection.Missing.Value;
+                Excel.Application xlexcel = new Excel.Application();
+
+                xlexcel.DisplayAlerts = false; 
+                Excel.Workbook xlWorkBook = xlexcel.Workbooks.Add(misValue);
+                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+
+                for (int i = 1; i < dataGrid.Columns.Count + 1; i++)
+                {
+                    xlWorkSheet.Cells[1, i] = dataGrid.Columns[i - 1].HeaderText;
+                }
+
+                Excel.Range rng = xlWorkSheet.get_Range("D:D").Cells;
+                rng.NumberFormat = "@";
+
+                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[2, 1];
+                CR.Select();
+
+                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
+
+                Excel.Range delRng = xlWorkSheet.get_Range("A:A").Cells;
+                delRng.Delete(Type.Missing);
+                xlWorkSheet.get_Range("A1").Select();
+
+                xlWorkBook.SaveAs(sfd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlexcel.DisplayAlerts = true;
+                xlWorkBook.Close(true, misValue, misValue);
+                xlexcel.Quit();
+
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlexcel);
+
+                Clipboard.Clear();
+                dataGrid.ClearSelection();
+
+                if (File.Exists(sfd.FileName))
+                    System.Diagnostics.Process.Start(sfd.FileName);
+            }
+        }
+        private void copyAlltoClipboard()
+        {
+            dataGrid.SelectAll();
+            DataObject dataObj = dataGrid.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+        }
+
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occurred while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
             }
         }
     }
