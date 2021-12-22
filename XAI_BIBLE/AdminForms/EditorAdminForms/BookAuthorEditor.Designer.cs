@@ -30,7 +30,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxInputNameAuthor = new System.Windows.Forms.TextBox();
@@ -45,21 +44,12 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(330, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::XAI_BIBLE.Properties.Resources.edit_removebg_preview;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(77, 22);
-            this.toolStripButton1.Text = "Зберегти";
             // 
             // toolStripButton3
             // 
@@ -176,7 +166,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxInputNameAuthor;

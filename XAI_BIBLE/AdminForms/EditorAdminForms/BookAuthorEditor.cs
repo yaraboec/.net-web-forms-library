@@ -85,7 +85,9 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            _parenForm.UpdateDataInGrid();
+            _parenForm.Show();
+            this.Close();
         }
 
         Point lastPoint;

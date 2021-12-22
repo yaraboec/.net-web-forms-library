@@ -65,14 +65,11 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            _parenForm.UpdateDataInGrid();
+            _parenForm.Show();
+            this.Close();
         }
 
         Point lastPoint;
