@@ -1,47 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DataAccess.Entities;
-using DataAccess.Repositories;
+using DataAccess.Repositories.UserRepository;
 using Services.Contracts;
 
 namespace Services.Services
 {
     public class UserService : IUserService
     {
-        private readonly ISqlRepository<User> _iSqlRepository;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(ISqlRepository<User> iSqlRepository)
+        public UserService(IUserRepository userRepository)
         {
-            _iSqlRepository = iSqlRepository;
+            _userRepository = userRepository;
         }
 
-        public User GetById(Guid id)
+        public User GetByUsername(string username)
         {
-            return _iSqlRepository.GetById(id);
+            return _userRepository.GetByUsername(username);
         }
 
         public IEnumerable<User> GetAll()
         {
-            return _iSqlRepository.GetAll();
+            return _userRepository.GetAll();
         }
 
         public User Create(User user)
         {
-            return _iSqlRepository.Create(user);
+            return _userRepository.Create(user);
         }
 
         public User Update(User user)
         {
-            return _iSqlRepository.Update(user);
+            return _userRepository.Update(user);
         }
 
-        public User Delete(Guid id)
+        public User Delete(string username)
         {
-            return _iSqlRepository.Delete(id);
+            return _userRepository.Delete(username);
         }
     }
 }

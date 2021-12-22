@@ -192,6 +192,8 @@
     <Compile Include="Repositories\PublicationPlanTableRepository\IPublicationPlanTableRepository.cs" />
     <Compile Include="Repositories\PublicationPlanTableRepository\PublicationPlanTableRepository.cs" />
     <Compile Include="Repositories\SqlRepository.cs" />
+    <Compile Include="Repositories\UserRepository\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository\UserRepository.cs" />
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>

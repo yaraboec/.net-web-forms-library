@@ -18,9 +18,7 @@ namespace XAI_BIBLE
 {
     public partial class Login : Form
     {
-        XaiBibleContext _context;
-        ISqlRepository<User> _repository;
-        IUserService _service;
+        IAccountService _service;
 
         public Login()
         {
@@ -28,9 +26,7 @@ namespace XAI_BIBLE
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             UpdateStyles();
-            _context = new XaiBibleContext();
-            _repository = new SqlRepository<User>(_context);
-            _service = new UserService(_repository);
+            _service = new AccountService();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -157,8 +153,9 @@ namespace XAI_BIBLE
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            Register f2 = new Register();
-            f2.Show();
+            Register register = new Register();
+            register.openByRegisterForm(this);
+            register.Show();
         }
 
         private void txtBox_LoginTextbox(object sender, EventArgs e)
@@ -175,20 +172,27 @@ namespace XAI_BIBLE
         {
             var login = txtBox_Login.Text;
             var password = txtBox_Password.Text;
+            var user = new User()
+            {
+                Username = login,
+                Password = password
+            };
 
-            // var user = _service.GetById(new Guid("4B5E92CB-D1B4-49D3-108E-08D9C33352D8"));
-
-            if (txtBox_Login.Text == "admin" && txtBox_Password.Text == "admin")
+            if (_service.Authenticate(user))
             {
                 this.Hide();
-                Dataview f = new Dataview();
-                f.Show();
+                Dataview dataView = new Dataview();
+                dataView.Show();
+            }
+            else
+            {
+                MessageBox.Show("Пароль введено неправильно або користувача не існує", "", MessageBoxButtons.OK);
             }
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         Point lastPoint;

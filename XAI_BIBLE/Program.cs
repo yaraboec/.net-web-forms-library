@@ -11,7 +11,7 @@ namespace XAI_BIBLE
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BookAuthor());
+            Application.Run(new Login());
         }
     }
 }
