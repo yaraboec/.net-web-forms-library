@@ -7,6 +7,7 @@ using DataAccess.Context;
 using DataAccess.Repositories;
 using Services.Contracts;
 using Services.Services;
+using System.Drawing;
 
 namespace XAI_BIBLE.AdminForms.EditorAdminForms
 {
@@ -65,6 +66,32 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                 _parentForm.Show();
                 this.Close();
             }
+        }
+
+        Point lastPoint;
+
+        private void LanguageEditor_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void LanguageEditor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.LightSkyBlue;
         }
     }
 }
