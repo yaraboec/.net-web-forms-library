@@ -33,11 +33,9 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.textBoxInputNameAuthor = new System.Windows.Forms.TextBox();
             this.buttonEditBookAuthor = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.texBoxtInputSurname = new System.Windows.Forms.TextBox();
+            this.textBoxtInputSurname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxInputMiddleName = new System.Windows.Forms.TextBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -75,12 +73,12 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.label2.TabIndex = 3;
             this.label2.Text = "inpurSurname";
             // 
-            // texBoxtInputSurname
+            // textBoxtInputSurname
             // 
-            this.texBoxtInputSurname.Location = new System.Drawing.Point(40, 101);
-            this.texBoxtInputSurname.Name = "texBoxtInputSurname";
-            this.texBoxtInputSurname.Size = new System.Drawing.Size(239, 20);
-            this.texBoxtInputSurname.TabIndex = 4;
+            this.textBoxtInputSurname.Location = new System.Drawing.Point(40, 101);
+            this.textBoxtInputSurname.Name = "textBoxtInputSurname";
+            this.textBoxtInputSurname.Size = new System.Drawing.Size(239, 20);
+            this.textBoxtInputSurname.TabIndex = 4;
             // 
             // label3
             // 
@@ -98,36 +96,14 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.textBoxInputMiddleName.Size = new System.Drawing.Size(239, 20);
             this.textBoxInputMiddleName.TabIndex = 6;
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(43, 280);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 7;
-            this.btnUpdate.Text = "Оновити";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(192, 280);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 8;
-            this.btnDelete.Text = "Видалити";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // BookAuthorEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(405, 450);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.textBoxInputMiddleName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.texBoxtInputSurname);
+            this.Controls.Add(this.textBoxtInputSurname);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonEditBookAuthor);
             this.Controls.Add(this.textBoxInputNameAuthor);
@@ -145,10 +121,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         private System.Windows.Forms.TextBox textBoxInputNameAuthor;
         private System.Windows.Forms.Button buttonEditBookAuthor;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox texBoxtInputSurname;
+        private System.Windows.Forms.TextBox textBoxtInputSurname;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxInputMiddleName;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
     }
 }

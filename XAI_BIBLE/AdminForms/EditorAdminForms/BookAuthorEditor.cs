@@ -13,10 +13,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.BookAuthor> _repository;
         IBookAuthorService _service;
-        string _name;
-        string _surname;
-        string _middlename;
-        Guid _id;
+        private BookAuthor _parenForm;
+        private DataAccess.Entities.BookAuthor _bookAuthor;
 
         public BookAuthorEditor()
         {
@@ -26,60 +24,53 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             _service = new BookAuthorService(_repository);
         }
 
-        public void setData(string name, string surname, string middlename, Guid id)
+        public void getGuidForUpdate(Guid id, BookAuthor parentForm)
         {
-            textBoxInputNameAuthor.Text = _name = name;
-            texBoxtInputSurname.Text = _surname = surname;
-            textBoxInputMiddleName.Text = _middlename = middlename;
-            _id = id;
+            var entity = _service.GetById(id);
+            _bookAuthor = entity;
+            _parenForm = parentForm;
+
+            textBoxInputNameAuthor.Text = entity.Name;
+            textBoxtInputSurname.Text = entity.Surname;
+            textBoxInputMiddleName.Text = entity.MiddleName;
+
+            parentForm.Hide();
         }
 
-        public void onClose()
+        public void startEditorForAdd(BookAuthor parentForm)
         {
-            this.Close();
-
-            BookAuthor bookAuthor = new BookAuthor();
-            bookAuthor.Show();
+            _parenForm = parentForm;
+            parentForm.Hide();
         }
 
         private void buttonEditBookAuthor_Click(object sender, EventArgs e)
         {
             if (textBoxInputNameAuthor.Text != ""
-            && texBoxtInputSurname.Text != ""
+            && textBoxtInputSurname.Text != ""
             && textBoxInputMiddleName.Text != "")
             {
-                _service.Create(new DataAccess.Entities.BookAuthor()
+                if (_bookAuthor == null)
                 {
-                    Name = textBoxInputNameAuthor.Text,
-                    Surname = texBoxtInputSurname.Text,
-                    MiddleName = textBoxInputMiddleName.Text
-                });
-            }
-            onClose();
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (textBoxInputNameAuthor.Text != ""
-            && texBoxtInputSurname.Text != ""
-            && textBoxInputMiddleName.Text != "")
-            {
-                _service.Update(new DataAccess.Entities.BookAuthor()
+                    _service.Create(new DataAccess.Entities.BookAuthor()
+                    {
+                        Name = textBoxInputNameAuthor.Text,
+                        Surname = textBoxtInputSurname.Text,
+                        MiddleName = textBoxInputMiddleName.Text
+                    });
+                }
+                else
                 {
-                    Id = _id,
-                    Name = textBoxInputNameAuthor.Text,
-                    Surname = texBoxtInputSurname.Text,
-                    MiddleName = textBoxInputMiddleName.Text
-                });
+                    _bookAuthor.Name = textBoxInputNameAuthor.Text;
+                    _bookAuthor.Surname = textBoxtInputSurname.Text;
+                    _bookAuthor.MiddleName = textBoxInputMiddleName.Text;
+
+                    _service.Update(_bookAuthor);
+                }
+
+                _parenForm.UpdateDataInGrid();
+                _parenForm.Show();
+                this.Close();
             }
-            onClose();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            _service.Delete(_id);
-
-            onClose();
         }
     }
 }
