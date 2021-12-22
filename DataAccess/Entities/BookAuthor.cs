@@ -10,6 +10,6 @@ namespace DataAccess.Entities
 
         public string MiddleName { get; set; }
 
-        public virtual ICollection<PublicationPlan> PublicationPlans { get; set; }
+       public virtual ICollection<AuthorPlan> AuthorPlans { get; set; }
     }
 }
