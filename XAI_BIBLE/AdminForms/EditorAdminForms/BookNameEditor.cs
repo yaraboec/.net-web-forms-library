@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DataAccess.Context;
@@ -96,6 +97,32 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         private void comboBoxSelectBookType_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxForGuid.SelectedIndex = comboBoxSelectBookType.SelectedIndex;
+        }
+
+        private void button1_MouseEnter(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.LightSkyBlue;
+        }
+
+        Point lastPoint;
+
+        private void BookNameEditor_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void BookNameEditor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
         }
     }
 }
