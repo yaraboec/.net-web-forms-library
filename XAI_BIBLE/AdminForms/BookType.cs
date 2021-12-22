@@ -16,6 +16,7 @@ namespace XAI_BIBLE.AdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.BookType> _repository;
         IBookTypeService _service;
+        private Dataview _parentForm;
 
         public BookType()
         {
@@ -107,10 +108,17 @@ namespace XAI_BIBLE.AdminForms
                 dataGridView1.Rows.Add(type.Type, type.Id);
             }
         }
+        public void startFormByDataview(Dataview parentForm)
+        {
+            _parentForm = parentForm;
+            parentForm.Hide();
+        }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            //Application.Exit(); СЮДА ПЕРЕДАТЬ PARENT FORM И СКРЫТЬ КАК ЗДЕСЬ АНАЛОГИЯ
+            //_parentForm.UpdateDataInGrid(); UPDATE
+            _parentForm.Show();
+            this.Close();
         }
     }
 }

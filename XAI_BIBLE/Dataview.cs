@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
+using XAI_BIBLE.AdminForms;
 using System.Windows.Forms;
 
 namespace XAI_BIBLE
@@ -11,6 +8,7 @@ namespace XAI_BIBLE
     public partial class Dataview : Form
     {
         private string _username;
+        private Login _parentForm;
 
         public Dataview()
         {
@@ -25,19 +23,10 @@ namespace XAI_BIBLE
 
         }
 
-        private void toolStripTextBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-        
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Close();
+            _parentForm.Show();
+            this.Close();
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -51,12 +40,14 @@ namespace XAI_BIBLE
 
         private void Dataview_Load(object sender, EventArgs e)
         {
-
+            toolStripButtonAdmin.Visible = _username == "admin";
         }
 
-        public void getUsernameByLogin(string username)
+        public void getUsernameByLogin(string username, Login parentForm)
         {
             _username = username;
+            _parentForm = parentForm;
+            parentForm.Hide();
         }
 
         Point lastPoint;
@@ -73,6 +64,48 @@ namespace XAI_BIBLE
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
+        }
+
+        private void авториToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookAuthor bookAuthor = new BookAuthor();
+            bookAuthor.startFormByDataview(this);
+            bookAuthor.Show();
+        }
+
+        private void назвиКнигToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookName bookName = new BookName();
+            bookName.startFormByDataview(this);
+            bookName.Show();
+        }
+
+        private void типиКнигToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookType bookType = new BookType();
+            bookType.startFormByDataview(this);
+            bookType.Show();
+        }
+
+        private void дисципліниToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Discipline discipline = new Discipline();
+            discipline.startFormByDataview(this);
+            discipline.Show();
+        }
+
+        private void навчальніПрограмиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EducationalProgram educationalProgram = new EducationalProgram();
+            educationalProgram.startFormByDataview(this);
+            educationalProgram.Show();
+        }
+
+        private void мовиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Language language = new Language();
+            language.startFormByDataview(this);
+            language.Show();
         }
     }
 }

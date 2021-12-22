@@ -13,7 +13,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.BookType> _repository;
         IBookTypeService _service;
-        private BookType _parenForm;
+        private BookType _parentForm;
         private DataAccess.Entities.BookType _bookType;
 
         public BookTypeEditor()
@@ -28,7 +28,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         {
             var entity = _service.GetById(id);
             _bookType = entity;
-            _parenForm = parentForm;
+            _parentForm = parentForm;
 
             textBoxInputBookType.Text = entity.Type;
 
@@ -37,14 +37,14 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         public void startEditorForAdd(BookType parentForm)
         {
-            _parenForm = parentForm;
+            _parentForm = parentForm;
             parentForm.Hide();
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            _parenForm.UpdateDataInGrid();
-            _parenForm.Show();
+            _parentForm.UpdateDataInGrid();
+            _parentForm.Show();
             this.Close();
         }
 
@@ -92,8 +92,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                     _service.Update(_bookType);
                 }
 
-                _parenForm.UpdateDataInGrid();
-                _parenForm.Show();
+                _parentForm.UpdateDataInGrid();
+                _parentForm.Show();
                 this.Close();
             }
         }

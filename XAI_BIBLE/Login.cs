@@ -180,14 +180,19 @@ namespace XAI_BIBLE
 
             if (_service.Authenticate(user))
             {
-                this.Hide();
+                if (!chkBox_Remember.Checked)
+                {
+                    txtBox_Login.Text = "";
+                    txtBox_Password.Text = "";
+                }
                 Dataview dataView = new Dataview();
-                dataView.getUsernameByLogin(login);
+                dataView.getUsernameByLogin(login, this);
                 dataView.Show();
             }
             else
             {
                 MessageBox.Show("Пароль введено неправильно або користувача не існує", "", MessageBoxButtons.OK);
+                txtBox_Password.Text = "";
             }
         }
 
