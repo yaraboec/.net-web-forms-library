@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using DataAccess.Context;
 using DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +11,13 @@ namespace DataAccess.Repositories.BookNameRepository
     {
         private readonly DbSet<BookName> _dbSet;
         private readonly XaiBibleContext _context;
+
+        public BookNameRepository(XaiBibleContext context)
+        {
+            _dbSet = context.Set<BookName>();
+            _context = context;
+        }
+
         public BookName Create(BookName bookName)
         {
             _dbSet.Add(bookName);
@@ -23,12 +28,12 @@ namespace DataAccess.Repositories.BookNameRepository
 
         public BookName Delete(Guid id)
         {
-            BookName bookName = _dbSet.FirstOrDefault(record => record.Id == id);
+            BookName bookName = _dbSet.AsNoTracking().FirstOrDefault(record => record.Id == id);
 
             if (bookName != null)
             {
                 _dbSet.Remove(bookName);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
 
             return bookName;
@@ -51,14 +56,14 @@ namespace DataAccess.Repositories.BookNameRepository
 
         public BookName Update(BookName bookName)
         {
-            BookName _bookName = _dbSet.FirstOrDefault(record => record.Id == bookName.Id);
+            BookName currentBookName = _dbSet.Where(val => val.Id == bookName.Id).AsNoTracking().FirstOrDefault();
 
-            if (_bookName != null)
+            if (currentBookName != null)
             {
-                _dbSet.Update(_bookName);
-                _context.SaveChangesAsync();
+                _dbSet.Update(bookName);
+                _context.SaveChanges();
 
-                return _bookName;
+                return bookName;
             }
 
             return null;
