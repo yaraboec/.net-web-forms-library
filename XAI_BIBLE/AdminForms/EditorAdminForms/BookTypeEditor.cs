@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DataAccess.Context;
 using DataAccess.Repositories;
@@ -62,6 +63,42 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                 _parenForm.Show();
                 this.Close();
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        Point lastPoint;
+
+        private void BookTypeEditor_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void BookTypeEditor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void buttonEditBookType_MouseEnter(object sender, EventArgs e)
+        {
+            buttonEditBookType.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void buttonEditBookType_MouseLeave(object sender, EventArgs e)
+        {
+            buttonEditBookType.BackColor = Color.LightSkyBlue;
         }
     }
 }
