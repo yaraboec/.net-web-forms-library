@@ -165,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\XaiBibleContext.cs" />
+    <Compile Include="Entities\AuthorPlan.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\BookAuthor.cs" />
     <Compile Include="Entities\BookName.cs" />
@@ -173,12 +174,15 @@
     <Compile Include="Entities\EducationalProgram.cs" />
     <Compile Include="Entities\Language.cs" />
     <Compile Include="Entities\MethodPublication.cs" />
+    <Compile Include="Entities\ProgramPlan.cs" />
     <Compile Include="Entities\PublicationPlan.cs" />
     <Compile Include="Entities\PublicationPlanTable.cs" />
     <Compile Include="Entities\Speciality.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Migrations\20211219185650_CreateInitial.cs" />
-    <Compile Include="Migrations\20211219185650_CreateInitial.Designer.cs" />
+    <Compile Include="Migrations\20211222132327_InitialCreate.cs" />
+    <Compile Include="Migrations\20211222132327_InitialCreate.designer.cs">
+      <DependentUpon>20211222132327_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\XaiBibleContextModelSnapshot.cs" />
     <Compile Include="Repositories\BookNameRepository\BookNameRepository.cs" />
     <Compile Include="Repositories\BookNameRepository\IBookNameRepository.cs" />
@@ -188,6 +192,8 @@
     <Compile Include="Repositories\PublicationPlanTableRepository\IPublicationPlanTableRepository.cs" />
     <Compile Include="Repositories\PublicationPlanTableRepository\PublicationPlanTableRepository.cs" />
     <Compile Include="Repositories\SqlRepository.cs" />
+    <Compile Include="Repositories\UserRepository\IUserRepository.cs" />
+    <Compile Include="Repositories\UserRepository\UserRepository.cs" />
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>

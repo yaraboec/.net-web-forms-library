@@ -6,6 +6,6 @@ namespace DataAccess.Entities
     {
         public string Name { get; set; }
 
-        public virtual ICollection<PublicationPlan> PublicationPlans { get; set; }
+        public virtual ICollection<ProgramPlan> ProgramPlans { get; set; }
     }
 }

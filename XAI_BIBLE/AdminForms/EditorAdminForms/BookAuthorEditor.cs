@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using DataAccess.Context;
-using DataAccess.Entities;
 using DataAccess.Repositories;
 using Services.Contracts;
 using Services.Services;
@@ -13,6 +13,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.BookAuthor> _repository;
         IBookAuthorService _service;
+        private BookAuthor _parenForm;
+        private DataAccess.Entities.BookAuthor _bookAuthor;
 
         public BookAuthorEditor()
         {
@@ -22,24 +24,86 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             _service = new BookAuthorService(_repository);
         }
 
+        public void getGuidForUpdate(Guid id, BookAuthor parentForm)
+        {
+            var entity = _service.GetById(id);
+            _bookAuthor = entity;
+            _parenForm = parentForm;
+
+            textBoxInputNameAuthor.Text = entity.Name;
+            textBoxtInputSurname.Text = entity.Surname;
+            textBoxInputMiddleName.Text = entity.MiddleName;
+
+            parentForm.Hide();
+        }
+
+        public void startEditorForAdd(BookAuthor parentForm)
+        {
+            _parenForm = parentForm;
+            parentForm.Hide();
+        }
+
         private void buttonEditBookAuthor_Click(object sender, EventArgs e)
         {
             if (textBoxInputNameAuthor.Text != ""
-            && texBoxtInputSurname.Text != ""
+            && textBoxtInputSurname.Text != ""
             && textBoxInputMiddleName.Text != "")
             {
-                _service.Create(new DataAccess.Entities.BookAuthor()
+                if (_bookAuthor == null)
                 {
-                    Name = textBoxInputNameAuthor.Text,
-                    Surname = texBoxtInputSurname.Text,
-                    MiddleName = textBoxInputMiddleName.Text
-                });
+                    _service.Create(new DataAccess.Entities.BookAuthor()
+                    {
+                        Name = textBoxInputNameAuthor.Text,
+                        Surname = textBoxtInputSurname.Text,
+                        MiddleName = textBoxInputMiddleName.Text
+                    });
+                }
+                else
+                {
+                    _bookAuthor.Name = textBoxInputNameAuthor.Text;
+                    _bookAuthor.Surname = textBoxtInputSurname.Text;
+                    _bookAuthor.MiddleName = textBoxInputMiddleName.Text;
+
+                    _service.Update(_bookAuthor);
+                }
+
+                _parenForm.UpdateDataInGrid();
+                _parenForm.Show();
+                this.Close();
             }
+        }
 
+        private void buttonEditBookAuthor_MouseEnter(object sender, EventArgs e)
+        {
+            buttonEditBookAuthor.BackColor = Color.DeepSkyBlue;
+        }
+
+        private void buttonEditBookAuthor_MouseLeave(object sender, EventArgs e)
+        {
+            buttonEditBookAuthor.BackColor = Color.LightSkyBlue;
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            _parenForm.UpdateDataInGrid();
+            _parenForm.Show();
             this.Close();
+        }
 
-            BookAuthor bookAuthor = new BookAuthor();
-            bookAuthor.Show();
+        Point lastPoint;
+
+        private void BookAuthorEditor_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void BookAuthorEditor_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
         }
     }
 }

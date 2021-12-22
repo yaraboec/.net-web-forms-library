@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class CreateInitial : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -127,31 +127,42 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PublicationPlanTables",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PublicationPlanTables", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PublicationPlanTables_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PublicationPlans",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Course = table.Column<int>(nullable: false),
-                    BookAuthorId = table.Column<Guid>(nullable: false),
                     BookNameId = table.Column<Guid>(nullable: false),
                     SpecialityId = table.Column<Guid>(nullable: false),
-                    EducationalProgramId = table.Column<Guid>(nullable: false),
                     DisciplineId = table.Column<Guid>(nullable: true),
                     Pages = table.Column<int>(nullable: true),
                     Overhead = table.Column<int>(nullable: true),
                     LanguageId = table.Column<Guid>(nullable: false),
                     MethodPublicationId = table.Column<Guid>(nullable: false),
-                    WillPublish = table.Column<bool>(nullable: false)
+                    WillPublish = table.Column<bool>(nullable: false),
+                    PublicationPlanTableId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PublicationPlans", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PublicationPlans_BookAuthors_BookAuthorId",
-                        column: x => x.BookAuthorId,
-                        principalTable: "BookAuthors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PublicationPlans_BookNames_BookNameId",
                         column: x => x.BookNameId,
@@ -165,12 +176,6 @@ namespace DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_PublicationPlans_EducationalPrograms_EducationalProgramId",
-                        column: x => x.EducationalProgramId,
-                        principalTable: "EducationalPrograms",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_PublicationPlans_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
@@ -183,6 +188,12 @@ namespace DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_PublicationPlans_PublicationPlanTables_PublicationPlanTableId",
+                        column: x => x.PublicationPlanTableId,
+                        principalTable: "PublicationPlanTables",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_PublicationPlans_Specialities_SpecialityId",
                         column: x => x.SpecialityId,
                         principalTable: "Specialities",
@@ -191,29 +202,59 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PublicationPlanTables",
+                name: "AuthorPlan",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    BookAuthorId = table.Column<Guid>(nullable: false),
                     PublicationPlanId = table.Column<Guid>(nullable: false),
-                    UserId = table.Column<Guid>(nullable: false)
+                    Id = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PublicationPlanTables", x => x.Id);
+                    table.PrimaryKey("PK_AuthorPlan", x => new { x.BookAuthorId, x.PublicationPlanId });
                     table.ForeignKey(
-                        name: "FK_PublicationPlanTables_PublicationPlans_PublicationPlanId",
+                        name: "FK_AuthorPlan_BookAuthors_BookAuthorId",
+                        column: x => x.BookAuthorId,
+                        principalTable: "BookAuthors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AuthorPlan_PublicationPlans_PublicationPlanId",
                         column: x => x.PublicationPlanId,
                         principalTable: "PublicationPlans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProgramPlan",
+                columns: table => new
+                {
+                    EducationalProgramId = table.Column<Guid>(nullable: false),
+                    PublicationPlanId = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProgramPlan", x => new { x.EducationalProgramId, x.PublicationPlanId });
                     table.ForeignKey(
-                        name: "FK_PublicationPlanTables_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        name: "FK_ProgramPlan_EducationalPrograms_EducationalProgramId",
+                        column: x => x.EducationalProgramId,
+                        principalTable: "EducationalPrograms",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ProgramPlan_PublicationPlans_PublicationPlanId",
+                        column: x => x.PublicationPlanId,
+                        principalTable: "PublicationPlans",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuthorPlan_PublicationPlanId",
+                table: "AuthorPlan",
+                column: "PublicationPlanId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookNames_BookTypeId",
@@ -221,9 +262,9 @@ namespace DataAccess.Migrations
                 column: "BookTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PublicationPlans_BookAuthorId",
-                table: "PublicationPlans",
-                column: "BookAuthorId");
+                name: "IX_ProgramPlan_PublicationPlanId",
+                table: "ProgramPlan",
+                column: "PublicationPlanId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PublicationPlans_BookNameId",
@@ -236,11 +277,6 @@ namespace DataAccess.Migrations
                 column: "DisciplineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PublicationPlans_EducationalProgramId",
-                table: "PublicationPlans",
-                column: "EducationalProgramId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PublicationPlans_LanguageId",
                 table: "PublicationPlans",
                 column: "LanguageId");
@@ -251,19 +287,20 @@ namespace DataAccess.Migrations
                 column: "MethodPublicationId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PublicationPlans_PublicationPlanTableId",
+                table: "PublicationPlans",
+                column: "PublicationPlanTableId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PublicationPlans_SpecialityId",
                 table: "PublicationPlans",
                 column: "SpecialityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PublicationPlanTables_PublicationPlanId",
-                table: "PublicationPlanTables",
-                column: "PublicationPlanId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PublicationPlanTables_UserId",
                 table: "PublicationPlanTables",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Username",
@@ -276,16 +313,19 @@ namespace DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PublicationPlanTables");
+                name: "AuthorPlan");
 
             migrationBuilder.DropTable(
-                name: "PublicationPlans");
-
-            migrationBuilder.DropTable(
-                name: "Users");
+                name: "ProgramPlan");
 
             migrationBuilder.DropTable(
                 name: "BookAuthors");
+
+            migrationBuilder.DropTable(
+                name: "EducationalPrograms");
+
+            migrationBuilder.DropTable(
+                name: "PublicationPlans");
 
             migrationBuilder.DropTable(
                 name: "BookNames");
@@ -294,19 +334,22 @@ namespace DataAccess.Migrations
                 name: "Disciplines");
 
             migrationBuilder.DropTable(
-                name: "EducationalPrograms");
-
-            migrationBuilder.DropTable(
                 name: "Languages");
 
             migrationBuilder.DropTable(
                 name: "MethodPublications");
 
             migrationBuilder.DropTable(
+                name: "PublicationPlanTables");
+
+            migrationBuilder.DropTable(
                 name: "Specialities");
 
             migrationBuilder.DropTable(
                 name: "BookTypes");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }

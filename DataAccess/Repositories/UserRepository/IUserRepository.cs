@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using DataAccess.Entities;
 
-namespace Services.Contracts
+namespace DataAccess.Repositories.UserRepository
 {
-    public interface IUserService
+    public interface IUserRepository
     {
         User GetByUsername(string username);
 

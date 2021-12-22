@@ -16,6 +16,32 @@ namespace DataAccess.Context
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Username)
                 .IsUnique();
+
+            modelBuilder.Entity<AuthorPlan>()
+                .HasKey(t => new { t.BookAuthorId, t.PublicationPlanId });
+
+            modelBuilder.Entity<AuthorPlan>()
+                .HasOne(sc => sc.BookAuthor)
+                .WithMany(s => s.AuthorPlans)
+                .HasForeignKey(sc => sc.BookAuthorId);
+
+            modelBuilder.Entity<AuthorPlan>()
+                .HasOne(sc => sc.PublicationPlan)
+                .WithMany(c => c.AuthorPlans)
+                .HasForeignKey(sc => sc.PublicationPlanId);
+
+            modelBuilder.Entity<ProgramPlan>()
+                .HasKey(t => new { t.EducationalProgramId, t.PublicationPlanId });
+
+            modelBuilder.Entity<ProgramPlan>()
+                .HasOne(sc => sc.EducationalProgram)
+                .WithMany(s => s.ProgramPlans)
+                .HasForeignKey(sc => sc.EducationalProgramId);
+
+            modelBuilder.Entity<ProgramPlan>()
+                .HasOne(sc => sc.PublicationPlan)
+                .WithMany(c => c.ProgramPlans)
+                .HasForeignKey(sc => sc.PublicationPlanId);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -10,6 +10,8 @@ namespace XAI_BIBLE
 {
     public partial class Dataview : Form
     {
+        private string _username;
+
         public Dataview()
         {
             InitializeComponent();
@@ -35,9 +37,7 @@ namespace XAI_BIBLE
         
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Login k = new Login();
-            k.Show();
+            Close();
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -52,6 +52,11 @@ namespace XAI_BIBLE
         private void Dataview_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void getUsernameByLogin(string username)
+        {
+            _username = username;
         }
 
         Point lastPoint;

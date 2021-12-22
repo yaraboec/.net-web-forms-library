@@ -7,13 +7,13 @@ namespace DataAccess.Entities
     {
         public int Course { get; set; }
 
-        public Guid BookAuthorId { get; set; }
+        public ICollection<AuthorPlan> AuthorPlans { get; set; }
 
         public Guid BookNameId { get; set; }
 
         public Guid SpecialityId { get; set; }
 
-        public Guid EducationalProgramId { get; set; }
+        public ICollection<ProgramPlan> ProgramPlans { get; set; }
 
         public Guid? DisciplineId { get; set; }
 
@@ -27,11 +27,9 @@ namespace DataAccess.Entities
 
         public bool WillPublish { get; set; }
 
+        public Guid PublicationPlanTableId { get; set; }
+
         public virtual BookName BookName { get; set; }
-
-        public virtual BookAuthor BookAuthor { get; set; }
-
-        public virtual EducationalProgram EducationalProgram { get; set; }
 
         public virtual Speciality Speciality { get; set; }
 
@@ -40,5 +38,7 @@ namespace DataAccess.Entities
         public virtual Language Language { get; set; }
 
         public virtual MethodPublication MethodPublication { get; set; }
+
+        public virtual PublicationPlanTable PublicationPlanTable { get; set; }
     }
 }

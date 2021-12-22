@@ -9,7 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using DataAccess.Context;
 using DataAccess.Entities;
-using DataAccess.Repositories;
+using DataAccess.Repositories.UserRepository;
 using Services.Contracts;
 using Services.Services;
 
@@ -17,9 +17,8 @@ namespace XAI_BIBLE
 {
     public partial class Register : Form
     {
-        XaiBibleContext _context;
-        ISqlRepository<User> _repository;
-        IUserService _service;
+        private IAccountService _service;
+        private Login _loginForm;
         public Register()
         {
             InitializeComponent();
@@ -27,16 +26,13 @@ namespace XAI_BIBLE
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             UpdateStyles();
-            _context = new XaiBibleContext();
-            _repository = new SqlRepository<User>(_context);
-            _service = new UserService(_repository);
+            _service = new AccountService();
         }
 
         private void txtBox_RegisterLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            _loginForm.Show();
             this.Hide();
-            Login k = new Login();
-            k.Show();
         }
 
         private void Register_Load(object sender, EventArgs e)
@@ -51,7 +47,12 @@ namespace XAI_BIBLE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
+        }
+
+        public void openByRegisterForm(Login form)
+        {
+            _loginForm = form;
         }
 
         private void txtBox_RegisterLogin_Leave(object sender, EventArgs e)
@@ -148,21 +149,33 @@ namespace XAI_BIBLE
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
         }
 
         private void bttn_RegisterButton_Click(object sender, EventArgs e)
         {
             var login = txtBox_RegisterLogin.Text;
             var password = txtBox_RegisterPassword.Text;
+            var confirmPassword = txtBox_RegisterConfirmPassword.Text;
 
-            User user = new User
+            if (password == confirmPassword && login != "")
             {
-                Username = login,
-                Password = password
-            };
+                User user = new User
+                {
+                    Username = login,
+                    Password = password
+                };
 
-            _service.Create(user);
+                _service.Register(user);
+                _loginForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                txtBox_RegisterPassword.Text = "";
+                txtBox_RegisterConfirmPassword.Text = "";
+                MessageBox.Show("Паролі не співпадають", "", MessageBoxButtons.OK);
+            }
         }
 
         private void chkBox_Remember_CheckedChanged(object sender, EventArgs e)

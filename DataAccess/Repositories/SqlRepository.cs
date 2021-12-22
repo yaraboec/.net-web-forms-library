@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using DataAccess.Context;
 using DataAccess.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -45,7 +43,7 @@ namespace DataAccess.Repositories
             if (entity != null)
             {
                 _dbSet.Remove(entity);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
 
             return entity;
@@ -58,7 +56,7 @@ namespace DataAccess.Repositories
             if (currentEntity != null)
             {
                 _dbSet.Update(entity);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
 
                 return entity;
             }
