@@ -58,8 +58,8 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonAdmin = new System.Windows.Forms.ToolStripSplitButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -195,7 +195,7 @@
             this.toolStripButton3,
             this.toolStripSeparator2,
             this.toolStripButton4,
-            this.toolStripButton2,
+            this.toolStripButtonAdmin,
             this.toolStripSeparator3});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
@@ -266,18 +266,18 @@
             this.toolStripButton4.Text = "Додати таблицю";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = global::XAI_BIBLE.Properties.Resources.unnamed;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(96, 22);
-            this.toolStripButton2.Text = "Додати план";
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonAdmin
+            // 
+            this.toolStripButtonAdmin.Image = global::XAI_BIBLE.Properties.Resources.unnamed;
+            this.toolStripButtonAdmin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonAdmin.Name = "toolStripButtonAdmin";
+            this.toolStripButtonAdmin.Size = new System.Drawing.Size(115, 22);
+            this.toolStripButtonAdmin.Text = "Адміністрація";
             // 
             // Dataview
             // 
@@ -327,9 +327,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSplitButton toolStripButtonAdmin;
     }
 }

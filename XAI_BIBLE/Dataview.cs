@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace XAI_BIBLE
@@ -34,10 +30,10 @@ namespace XAI_BIBLE
         {
 
         }
-        
+
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -51,7 +47,7 @@ namespace XAI_BIBLE
 
         private void Dataview_Load(object sender, EventArgs e)
         {
-
+            toolStripButtonAdmin.Visible = _username == "admin";
         }
 
         public void getUsernameByLogin(string username)
