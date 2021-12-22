@@ -27,8 +27,7 @@ namespace XAI_BIBLE.AdminForms
 
         private void BookAuthor_Load(object sender, EventArgs e)
         {
-            List<DataAccess.Entities.BookAuthor> bookAuthors = new List<DataAccess.Entities.BookAuthor>();
-            bookAuthors = _service.GetAll().ToList();
+            var bookAuthors = _service.GetAll().ToList();
 
             DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
             btnUpdate.Name = "col3";
@@ -102,8 +101,7 @@ namespace XAI_BIBLE.AdminForms
 
         public void UpdateDataInGrid()
         {
-            List<DataAccess.Entities.BookAuthor> bookAuthors = new List<DataAccess.Entities.BookAuthor>();
-            bookAuthors = _service.GetAll().ToList();
+            var bookAuthors = _service.GetAll().ToList();
 
             dataGridView1.Rows.Clear();
 

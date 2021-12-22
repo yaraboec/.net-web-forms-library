@@ -124,5 +124,12 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                 this.Top += e.Y - lastPoint.Y;
             }
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            _parenForm.UpdateDataInGrid();
+            _parenForm.Show();
+            this.Close();
+        }
     }
 }

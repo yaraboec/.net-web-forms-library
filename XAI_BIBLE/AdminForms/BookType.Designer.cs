@@ -35,9 +35,9 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.background = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -50,7 +50,7 @@
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(310, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(580, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -78,7 +78,7 @@
             this.background.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.background.Location = new System.Drawing.Point(28, 34);
             this.background.Name = "background";
-            this.background.Size = new System.Drawing.Size(253, 205);
+            this.background.Size = new System.Drawing.Size(525, 205);
             this.background.TabIndex = 46;
             this.background.TabStop = false;
             // 
@@ -99,15 +99,9 @@
             this.Column2});
             this.dataGridView1.Location = new System.Drawing.Point(28, 34);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(253, 205);
+            this.dataGridView1.Size = new System.Drawing.Size(525, 205);
             this.dataGridView1.TabIndex = 47;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Column1
             // 
@@ -121,12 +115,18 @@
             this.Column2.Name = "Column2";
             this.Column2.Visible = false;
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // BookType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
-            this.ClientSize = new System.Drawing.Size(310, 264);
+            this.ClientSize = new System.Drawing.Size(580, 264);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.background);
             this.Controls.Add(this.toolStrip1);

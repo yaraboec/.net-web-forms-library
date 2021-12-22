@@ -95,7 +95,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.comboBoxSelectBookType.FormattingEnabled = true;
             this.comboBoxSelectBookType.Location = new System.Drawing.Point(40, 123);
             this.comboBoxSelectBookType.Name = "comboBoxSelectBookType";
-            this.comboBoxSelectBookType.Size = new System.Drawing.Size(129, 29);
+            this.comboBoxSelectBookType.Size = new System.Drawing.Size(256, 29);
             this.comboBoxSelectBookType.TabIndex = 5;
             this.comboBoxSelectBookType.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectBookType_SelectedIndexChanged);
             // 
@@ -127,6 +127,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(83, 22);
             this.toolStripButton3.Text = "Скасувати";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // BookNameEditor
             // 

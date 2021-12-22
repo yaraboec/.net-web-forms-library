@@ -41,30 +41,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             parentForm.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBoxInputBookType.Text != "")
-            {
-                if (_bookType == null)
-                {
-                    _service.Create(new DataAccess.Entities.BookType()
-                    {
-                        Type = textBoxInputBookType.Text
-                    });
-                }
-                else
-                {
-                    _bookType.Type = textBoxInputBookType.Text;
-
-                    _service.Update(_bookType);
-                }
-
-                _parenForm.UpdateDataInGrid();
-                _parenForm.Show();
-                this.Close();
-            }
-        }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             _parenForm.UpdateDataInGrid();
@@ -96,6 +72,30 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         private void buttonEditBookType_MouseLeave(object sender, EventArgs e)
         {
             buttonEditBookType.BackColor = Color.LightSkyBlue;
+        }
+
+        private void buttonEditBookType_Click(object sender, EventArgs e)
+        {
+            if (textBoxInputBookType.Text != "")
+            {
+                if (_bookType == null)
+                {
+                    _service.Create(new DataAccess.Entities.BookType()
+                    {
+                        Type = textBoxInputBookType.Text
+                    });
+                }
+                else
+                {
+                    _bookType.Type = textBoxInputBookType.Text;
+
+                    _service.Update(_bookType);
+                }
+
+                _parenForm.UpdateDataInGrid();
+                _parenForm.Show();
+                this.Close();
+            }
         }
     }
 }
