@@ -103,10 +103,5 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                 this.Top += e.Y - lastPoint.Y;
             }
         }
-
-        private void buttonEditBookAuthor_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

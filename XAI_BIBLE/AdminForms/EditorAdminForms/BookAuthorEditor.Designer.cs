@@ -121,7 +121,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.buttonEditBookAuthor.TabIndex = 58;
             this.buttonEditBookAuthor.Text = "Підтвердити";
             this.buttonEditBookAuthor.UseVisualStyleBackColor = false;
-            this.buttonEditBookAuthor.Click += new System.EventHandler(this.buttonEditBookAuthor_Click_1);
+            this.buttonEditBookAuthor.Click += new System.EventHandler(this.buttonEditBookAuthor_Click);
             this.buttonEditBookAuthor.MouseEnter += new System.EventHandler(this.buttonEditBookAuthor_MouseEnter);
             this.buttonEditBookAuthor.MouseLeave += new System.EventHandler(this.buttonEditBookAuthor_MouseLeave);
             // 
