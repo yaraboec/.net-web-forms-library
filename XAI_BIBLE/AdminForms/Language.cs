@@ -15,6 +15,7 @@ namespace XAI_BIBLE.AdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.Language> _repository;
         ILanguageService _service;
+        private Dataview _parentForm;
 
         public Language()
         {
@@ -58,10 +59,17 @@ namespace XAI_BIBLE.AdminForms
             languageEditor.startEditorForAdd(this);
             languageEditor.Show();
         }
+        public void startFormByDataview(Dataview parentForm)
+        {
+            _parentForm = parentForm;
+            parentForm.Hide();
+        }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            //Application.Exit(); СЮДА ПЕРЕДАТЬ PARENT FORM И СКРЫТЬ КАК ЗДЕСЬ АНАЛОГИЯ
+            //_parentForm.UpdateDataInGrid(); UPDATE
+            _parentForm.Show();
+            this.Close();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

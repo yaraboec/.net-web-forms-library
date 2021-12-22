@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DataAccess.Context;
-using DataAccess.Repositories;
 using DataAccess.Repositories.BookNameRepository;
 using Services.Contracts;
 using Services.Services;
@@ -17,6 +16,7 @@ namespace XAI_BIBLE.AdminForms
         XaiBibleContext _context;
         IBookNameRepository _repository;
         IBookNameService _service;
+        private Dataview _parentForm;
 
         public BookName()
         {
@@ -75,7 +75,7 @@ namespace XAI_BIBLE.AdminForms
                         BookNameEditor bookNameEditor = new BookNameEditor();
 
                         bookNameEditor.getGuidForUpdate(new Guid(entityId), this);
-                        
+
                         bookNameEditor.Show();
                     }
                 }
@@ -108,9 +108,16 @@ namespace XAI_BIBLE.AdminForms
             }
         }
 
+        public void startFormByDataview(Dataview parentForm)
+        {
+            _parentForm = parentForm;
+            parentForm.Hide();
+        }
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            // выход
+            //_parentForm.UpdateDataInGrid(); UPDATE
+            _parentForm.Show();
+            this.Close();
         }
     }
 }

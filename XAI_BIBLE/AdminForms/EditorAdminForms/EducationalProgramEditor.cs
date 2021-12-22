@@ -12,7 +12,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.EducationalProgram> _repository;
         IEducationalProgramService _service;
-        private EducationalProgram _parenForm;
+        private EducationalProgram _parentForm;
         private DataAccess.Entities.EducationalProgram _educationalProgram;
 
         public EducationalProgramEditor()
@@ -27,7 +27,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         {
             var entity = _service.GetById(id);
             _educationalProgram = entity;
-            _parenForm = parentForm;
+            _parentForm = parentForm;
 
             textBoxInputEducationalProgram.Text = entity.Name;
 
@@ -36,7 +36,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         public void startEditorForAdd(EducationalProgram parentForm)
         {
-            _parenForm = parentForm;
+            _parentForm = parentForm;
             parentForm.Hide();
         }
 
@@ -58,8 +58,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                     _service.Update(_educationalProgram);
                 }
 
-                _parenForm.UpdateDataInGrid();
-                _parenForm.Show();
+                _parentForm.UpdateDataInGrid();
+                _parentForm.Show();
                 this.Close();
             }
         }

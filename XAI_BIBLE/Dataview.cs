@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using XAI_BIBLE.AdminForms;
 using System.Windows.Forms;
 
 namespace XAI_BIBLE
@@ -69,6 +70,48 @@ namespace XAI_BIBLE
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
+        }
+
+        private void авториToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookAuthor bookAuthor = new BookAuthor();
+            bookAuthor.startFormByDataview(this);
+            bookAuthor.Show();
+        }
+
+        private void назвиКнигToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookName bookName = new BookName();
+            bookName.startFormByDataview(this);
+            bookName.Show();
+        }
+
+        private void типиКнигToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookType bookType = new BookType();
+            bookType.startFormByDataview(this);
+            bookType.Show();
+        }
+
+        private void дисципліниToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Discipline discipline = new Discipline();
+            discipline.startFormByDataview(this);
+            discipline.Show();
+        }
+
+        private void навчальніПрограмиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EducationalProgram educationalProgram = new EducationalProgram();
+            educationalProgram.startFormByDataview(this);
+            educationalProgram.Show();
+        }
+
+        private void мовиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Language language = new Language();
+            language.startFormByDataview(this);
+            language.Show();
         }
     }
 }

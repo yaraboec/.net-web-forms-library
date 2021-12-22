@@ -13,7 +13,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.BookAuthor> _repository;
         IBookAuthorService _service;
-        private BookAuthor _parenForm;
+        private BookAuthor _parentForm;
         private DataAccess.Entities.BookAuthor _bookAuthor;
 
         public BookAuthorEditor()
@@ -28,7 +28,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         {
             var entity = _service.GetById(id);
             _bookAuthor = entity;
-            _parenForm = parentForm;
+            _parentForm = parentForm;
 
             textBoxInputNameAuthor.Text = entity.Name;
             textBoxtInputSurname.Text = entity.Surname;
@@ -39,7 +39,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         public void startEditorForAdd(BookAuthor parentForm)
         {
-            _parenForm = parentForm;
+            _parentForm = parentForm;
             parentForm.Hide();
         }
 
@@ -67,8 +67,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                     _service.Update(_bookAuthor);
                 }
 
-                _parenForm.UpdateDataInGrid();
-                _parenForm.Show();
+                _parentForm.UpdateDataInGrid();
+                _parentForm.Show();
                 this.Close();
             }
         }
@@ -85,8 +85,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            _parenForm.UpdateDataInGrid();
-            _parenForm.Show();
+            _parentForm.UpdateDataInGrid();
+            _parentForm.Show();
             this.Close();
         }
 

@@ -12,7 +12,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.Discipline> _repository;
         IDisciplineService _service;
-        private Discipline _parenForm;
+        private Discipline _parentForm;
         private DataAccess.Entities.Discipline _discipline;
 
         public DisciplineEditor()
@@ -27,7 +27,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         {
             var entity = _service.GetById(id);
             _discipline = entity;
-            _parenForm = parentForm;
+            _parentForm = parentForm;
 
             textBoxInputNameDisc.Text = entity.Name;
 
@@ -36,7 +36,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         public void startEditorForAdd(Discipline parentForm)
         {
-            _parenForm = parentForm;
+            _parentForm = parentForm;
             parentForm.Hide();
         }
 
@@ -58,8 +58,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                     _service.Update(_discipline);
                 }
 
-                _parenForm.UpdateDataInGrid();
-                _parenForm.Show();
+                _parentForm.UpdateDataInGrid();
+                _parentForm.Show();
                 this.Close();
             }
         }

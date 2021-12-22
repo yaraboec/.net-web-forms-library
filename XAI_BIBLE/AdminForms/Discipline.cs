@@ -15,6 +15,7 @@ namespace XAI_BIBLE.AdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.Discipline> _repository;
         IDisciplineService _service;
+        private Dataview _parentForm;
 
         public Discipline()
         {
@@ -51,10 +52,17 @@ namespace XAI_BIBLE.AdminForms
                 dataGridView1.Rows.Add(discipline.Name, discipline.Id);
             }
         }
+        public void startFormByDataview(Dataview parentForm)
+        {
+            _parentForm = parentForm;
+            parentForm.Hide();
+        }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            //Application.Exit(); СЮДА ПЕРЕДАТЬ PARENT FORM И СКРЫТЬ КАК ЗДЕСЬ АНАЛОГИЯ
+            //_parentForm.UpdateDataInGrid(); UPDATE
+            _parentForm.Show();
+            this.Close();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)

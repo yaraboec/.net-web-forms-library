@@ -15,7 +15,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.Language> _repository;
         ILanguageService _service;
-        private Language _parenForm;
+        private Language _parentForm;
         private DataAccess.Entities.Language _language;
 
         public LanguageEditor()
@@ -30,7 +30,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         {
             var entity = _service.GetById(id);
             _language = entity;
-            _parenForm = parentForm;
+            _parentForm = parentForm;
 
             textBoxInputLanguage.Text = entity.Name;
 
@@ -39,7 +39,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
 
         public void startEditorForAdd(Language parentForm)
         {
-            _parenForm = parentForm;
+            _parentForm = parentForm;
             parentForm.Hide();
         }
 
@@ -61,8 +61,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                     _service.Update(_language);
                 }
 
-                _parenForm.UpdateDataInGrid();
-                _parenForm.Show();
+                _parentForm.UpdateDataInGrid();
+                _parentForm.Show();
                 this.Close();
             }
         }

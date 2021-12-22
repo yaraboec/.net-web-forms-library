@@ -16,6 +16,7 @@ namespace XAI_BIBLE.AdminForms
         XaiBibleContext _context;
         ISqlRepository<DataAccess.Entities.BookAuthor> _repository;
         IBookAuthorService _service;
+        private Dataview _parentForm;
 
         public BookAuthor()
         {
@@ -52,10 +53,18 @@ namespace XAI_BIBLE.AdminForms
                 dataGridView1.Rows.Add(author.Name, author.MiddleName, author.Surname, author.Id);
             }
         }
+        
+        public void startFormByDataview(Dataview parentForm)
+        {
+            _parentForm = parentForm;
+            parentForm.Hide();
+        }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            //Application.Exit(); СЮДА ПЕРЕДАТЬ PARENT FORM И СКРЫТЬ КАК ЗДЕСЬ АНАЛОГИЯ
+            //_parentForm.UpdateDataInGrid(); UPDATE
+            _parentForm.Show();
+            this.Close();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
