@@ -35,10 +35,9 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.background = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -62,6 +61,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(66, 22);
             this.toolStripButton1.Text = "Додати";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton3
             // 
@@ -71,6 +71,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(60, 22);
             this.toolStripButton3.Text = "Вийти";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // background
             // 
@@ -95,36 +96,30 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column4,
-            this.Column5});
+            this.Column2});
             this.dataGridView1.Location = new System.Drawing.Point(28, 34);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(253, 205);
             this.dataGridView1.TabIndex = 47;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Пеніс";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 110;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 50;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 50;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // imageList1
             // 
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Тип рукопису";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 110;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "id";
+            this.Column2.Name = "Column2";
+            this.Column2.Visible = false;
             // 
             // BookType
             // 
@@ -139,6 +134,7 @@
             this.Name = "BookType";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookAuthor";
+            this.Load += new System.EventHandler(this.BookTyper_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();
@@ -157,7 +153,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
