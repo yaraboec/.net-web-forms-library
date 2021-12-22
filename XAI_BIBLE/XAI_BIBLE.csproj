@@ -216,6 +216,12 @@
     <Compile Include="AdminForms\EditorAdminForms\EducationalProgramEditor.Designer.cs">
       <DependentUpon>EducationalProgramEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\LanguageEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\LanguageEditor.Designer.cs">
+      <DependentUpon>LanguageEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\EducationalProgram.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\EditorAdminForms\EducationalProgramEditor.resx">
       <DependentUpon>EducationalProgramEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\EditorAdminForms\LanguageEditor.resx">
+      <DependentUpon>LanguageEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\EducationalProgram.resx">
       <DependentUpon>EducationalProgram.cs</DependentUpon>

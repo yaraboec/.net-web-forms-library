@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -51,7 +50,6 @@ namespace XAI_BIBLE.AdminForms
             {
                 dataGridView1.Rows.Add(program.Name, program.Id);
             }
-
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
