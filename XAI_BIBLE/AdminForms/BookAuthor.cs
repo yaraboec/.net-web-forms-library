@@ -119,5 +119,10 @@ namespace XAI_BIBLE.AdminForms
                 dataGridView1.Rows.Add(author.Name, author.MiddleName, author.Surname, author.Id);
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

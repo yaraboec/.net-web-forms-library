@@ -107,5 +107,27 @@ namespace XAI_BIBLE
             language.startFormByDataview(this);
             language.Show();
         }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap printDataGridView = new Bitmap(this.dataGrid.Width, this.dataGrid.Height);
+            dataGrid.DrawToBitmap(printDataGridView, new Rectangle(0, 0, this.dataGrid.Width, this.dataGrid.Height));
+            e.Graphics.DrawImage(printDataGridView, 0, 0);
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDataGridViewDialog = new PrintDialog();
+            printDataGridViewDialog.Document = printDocument1;
+            printDataGridViewDialog.UseEXDialog = true;
+
+            DialogResult printDataGridViewDialogResult = printDataGridViewDialog.ShowDialog();
+
+            if (printDataGridViewDialogResult == DialogResult.OK)
+            {
+                printDocument1.DocumentName = "Друкування";
+                printDocument1.Print();
+            }
+        }
     }
 }
