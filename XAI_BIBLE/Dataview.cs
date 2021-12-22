@@ -8,6 +8,7 @@ namespace XAI_BIBLE
     public partial class Dataview : Form
     {
         private string _username;
+        private Login _parentForm;
 
         public Dataview()
         {
@@ -22,19 +23,10 @@ namespace XAI_BIBLE
 
         }
 
-        private void toolStripTextBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            _parentForm.Show();
+            this.Close();
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -51,9 +43,11 @@ namespace XAI_BIBLE
             toolStripButtonAdmin.Visible = _username == "admin";
         }
 
-        public void getUsernameByLogin(string username)
+        public void getUsernameByLogin(string username, Login parentForm)
         {
             _username = username;
+            _parentForm = parentForm;
+            parentForm.Hide();
         }
 
         Point lastPoint;

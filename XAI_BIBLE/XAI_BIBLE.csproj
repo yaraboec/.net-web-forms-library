@@ -234,12 +234,6 @@
     <Compile Include="AdminForms\Language.Designer.cs">
       <DependentUpon>Language.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForms\PublicationPlan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminForms\PublicationPlan.Designer.cs">
-      <DependentUpon>PublicationPlan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dataview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,9 +289,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\Language.resx">
       <DependentUpon>Language.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminForms\PublicationPlan.resx">
-      <DependentUpon>PublicationPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dataview.resx">
       <DependentUpon>Dataview.cs</DependentUpon>
