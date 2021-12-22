@@ -182,6 +182,7 @@ namespace XAI_BIBLE
             {
                 this.Hide();
                 Dataview dataView = new Dataview();
+                dataView.getUsernameByLogin(login);
                 dataView.Show();
             }
             else
