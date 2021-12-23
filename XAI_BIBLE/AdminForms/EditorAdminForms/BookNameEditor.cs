@@ -82,9 +82,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             foreach (var bookType in entities)
             {
                 comboBoxSelectBookType.Items.Add(bookType.Type);
-            }
-            foreach (var bookType in entities)
-            {
                 comboBoxForGuid.Items.Add(bookType.Id);
             }
 

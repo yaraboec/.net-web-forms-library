@@ -13,10 +13,17 @@ namespace DataAccess.Repositories.PublicationPlanRepository
     {
         private readonly DbSet<PublicationPlan> _dbSet;
         private readonly XaiBibleContext _context;
+
+        public PublicationPlanRepository(XaiBibleContext context)
+        {
+            _dbSet = context.Set<PublicationPlan>();
+            _context = context;
+        }
+
         public PublicationPlan Create(PublicationPlan publicationPlan)
         {
-            _dbSet.AddAsync(publicationPlan);
-            _context.SaveChangesAsync();
+            _dbSet.Add(publicationPlan);
+            _context.SaveChanges();
 
             return publicationPlan;
         }
@@ -28,7 +35,7 @@ namespace DataAccess.Repositories.PublicationPlanRepository
             if (publicationPlan != null)
             {
                 _dbSet.Remove(publicationPlan);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
 
             return publicationPlan;

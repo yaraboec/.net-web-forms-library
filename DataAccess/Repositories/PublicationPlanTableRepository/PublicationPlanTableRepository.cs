@@ -22,8 +22,8 @@ namespace DataAccess.Repositories.PublicationPlanTableRepository
 
         public PublicationPlanTable Create(PublicationPlanTable publicationPlanTable)
         {
-            _dbSet.AddAsync(publicationPlanTable);
-            _context.SaveChangesAsync();
+            _dbSet.Add(publicationPlanTable);
+            _context.SaveChanges();
 
             return publicationPlanTable;
         }
@@ -35,7 +35,7 @@ namespace DataAccess.Repositories.PublicationPlanTableRepository
             if (publicationPlanTable != null)
             {
                 _dbSet.Remove(publicationPlanTable);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
 
             return publicationPlanTable;

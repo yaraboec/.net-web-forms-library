@@ -9,14 +9,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories.ProgramPlanRepository
 {
-    public class ProgramPlanRepository
+    public class ProgramPlanRepository : IProgramPlanRepository
     {
         private readonly DbSet<ProgramPlan> _dbSet;
         private readonly XaiBibleContext _context;
+
+        public ProgramPlanRepository(XaiBibleContext context)
+        {
+            _dbSet = context.Set<ProgramPlan>();
+            _context = context;
+        }
+
         public ProgramPlan Create(ProgramPlan ProgramPlan)
         {
-            _dbSet.AddAsync(ProgramPlan);
-            _context.SaveChangesAsync();
+            _dbSet.Add(ProgramPlan);
+            _context.SaveChanges();
 
             return ProgramPlan;
         }
@@ -28,7 +35,7 @@ namespace DataAccess.Repositories.ProgramPlanRepository
             if (ProgramPlan != null)
             {
                 _dbSet.Remove(ProgramPlan);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
 
             return ProgramPlan;
