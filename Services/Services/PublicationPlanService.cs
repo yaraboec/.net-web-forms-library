@@ -25,6 +25,11 @@ namespace Services.Services
             return _iPublicationPlanRepository.GetAll();
         }
 
+        public IEnumerable<PublicationPlan> GetAllbyPublicationPlanTableId(Guid id)
+        {
+            return _iPublicationPlanRepository.GetAllbyPublicationPlanTableId(id);
+        }
+
         public PublicationPlan Create(PublicationPlan publicationPlan)
         {
             return _iPublicationPlanRepository.Create(publicationPlan);

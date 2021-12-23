@@ -14,6 +14,8 @@ namespace Services.Contracts
 
         IEnumerable<PublicationPlan> GetAll();
 
+        IEnumerable<PublicationPlan> GetAllbyPublicationPlanTableId(Guid id);
+
         PublicationPlan Create(PublicationPlan publicationPlan);
 
         PublicationPlan Delete(Guid id);

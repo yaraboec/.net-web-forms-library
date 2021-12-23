@@ -48,7 +48,21 @@ namespace DataAccess.Repositories.PublicationPlanRepository
                 .Include(discipline => discipline.Discipline)
                 .Include(language => language.Language)
                 .Include(methodPublication => methodPublication.MethodPublication)
-                .Include(publicationPlanTable => publicationPlanTable.PublicationPlanTable)
+                .AsNoTracking()
+                .ToList();
+        }
+
+        public IEnumerable<PublicationPlan> GetAllbyPublicationPlanTableId(Guid id)
+        {
+            return _dbSet.Where(x => x.PublicationPlanTableId == id )
+                .Include(authorPlan => authorPlan.AuthorPlans)
+                .Include(programPlan => programPlan.ProgramPlans)
+                .Include(bookName => bookName.BookName)
+                .ThenInclude(type => type.BookType)
+                .Include(speciality => speciality.Speciality)
+                .Include(discipline => discipline.Discipline)
+                .Include(language => language.Language)
+                .Include(methodPublication => methodPublication.MethodPublication)
                 .AsNoTracking()
                 .ToList();
         }
@@ -61,7 +75,6 @@ namespace DataAccess.Repositories.PublicationPlanRepository
                 .Include(discipline => discipline.Discipline)
                 .Include(language => language.Language)
                 .Include(methodPublication => methodPublication.MethodPublication)
-                .Include(publicationPlanTable => publicationPlanTable.PublicationPlanTable)
                 .AsNoTracking()
                 .FirstOrDefault();
         }
