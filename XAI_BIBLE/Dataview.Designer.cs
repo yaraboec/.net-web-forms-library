@@ -66,9 +66,9 @@
             this.навчальніПрограмиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.мовиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.методиПублікаційToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.спеціальностіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.спеціальностіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -211,6 +211,8 @@
             this.toolStrip.Size = new System.Drawing.Size(1171, 25);
             this.toolStrip.TabIndex = 54;
             this.toolStrip.Text = "toolStrip1";
+            this.toolStrip.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Dataview_MouseDown_1);
+            this.toolStrip.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Dataview_MouseMove_1);
             // 
             // toolStripButton1
             // 
@@ -344,6 +346,13 @@
             this.методиПублікаційToolStripMenuItem.Text = "Методи публікації";
             this.методиПублікаційToolStripMenuItem.Click += new System.EventHandler(this.методиПублікаційToolStripMenuItem_Click);
             // 
+            // спеціальностіToolStripMenuItem
+            // 
+            this.спеціальностіToolStripMenuItem.Name = "спеціальностіToolStripMenuItem";
+            this.спеціальностіToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.спеціальностіToolStripMenuItem.Text = "Спеціальності";
+            this.спеціальностіToolStripMenuItem.Click += new System.EventHandler(this.спеціальностіToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -352,13 +361,6 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // спеціальностіToolStripMenuItem
-            // 
-            this.спеціальностіToolStripMenuItem.Name = "спеціальностіToolStripMenuItem";
-            this.спеціальностіToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.спеціальностіToolStripMenuItem.Text = "Спеціальності";
-            this.спеціальностіToolStripMenuItem.Click += new System.EventHandler(this.спеціальностіToolStripMenuItem_Click);
             // 
             // Dataview
             // 
