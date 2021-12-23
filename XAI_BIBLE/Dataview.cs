@@ -39,6 +39,7 @@ namespace XAI_BIBLE
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
+            // add item to plan
         }
 
         private void Dataview_Load(object sender, EventArgs e)
