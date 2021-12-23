@@ -56,7 +56,9 @@ namespace DataAccess.Repositories.PublicationPlanRepository
         {
             return _dbSet.Where(x => x.PublicationPlanTableId == id )
                 .Include(authorPlan => authorPlan.AuthorPlans)
+                .ThenInclude(u => u.BookAuthor)
                 .Include(programPlan => programPlan.ProgramPlans)
+                .ThenInclude(u => u.EducationalProgram)
                 .Include(bookName => bookName.BookName)
                 .ThenInclude(type => type.BookType)
                 .Include(speciality => speciality.Speciality)

@@ -194,7 +194,7 @@ namespace XAI_BIBLE
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            //_parentForm.UpdateDataInGrid(); UPDATE
+            _parentForm.UpdateDataInGrid();
             _parentForm.Show();
             this.Close();
         }
@@ -236,7 +236,7 @@ namespace XAI_BIBLE
                 this.LinkByAuthorAndPublicationPlans();
                 this.LinkByProgramAndPublicationPlans();
 
-                //_parentForm.UpdateDataInGrid(); UPDATE
+                _parentForm.UpdateDataInGrid();
                 _parentForm.Show();
                 this.Close();
             }
