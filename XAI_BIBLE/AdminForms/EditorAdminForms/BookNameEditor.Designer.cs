@@ -116,6 +116,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.toolStrip1.Size = new System.Drawing.Size(330, 25);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookNameEditor_MouseDown);
+            this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BookNameEditor_MouseMove);
             // 
             // toolStripButton3
             // 

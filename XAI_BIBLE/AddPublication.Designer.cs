@@ -309,6 +309,8 @@ namespace XAI_BIBLE
             this.toolStrip1.Size = new System.Drawing.Size(1174, 25);
             this.toolStrip1.TabIndex = 58;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
+            this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
             // 
             // toolStripButton3
             // 

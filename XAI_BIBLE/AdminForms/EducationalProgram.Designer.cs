@@ -54,6 +54,8 @@
             this.toolStrip1.Size = new System.Drawing.Size(450, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EducationalProgram_MouseDown);
+            this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EducationalProgram_MouseMove);
             // 
             // toolStripButton1
             // 
