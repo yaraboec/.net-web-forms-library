@@ -40,7 +40,9 @@ namespace XAI_BIBLE
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            // add item to plan
+            AddPublication addPublication = new AddPublication();
+            addPublication.startFormByDataview(_userId, this);
+            addPublication.Show();
         }
 
         private void Dataview_Load(object sender, EventArgs e)
