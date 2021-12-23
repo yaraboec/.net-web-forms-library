@@ -54,10 +54,10 @@ namespace DataAccess.Repositories.PublicationPlanTableRepository
 
             if (_publicationPlanTable != null)
             {
-                _dbSet.Update(_publicationPlanTable);
-                _context.SaveChangesAsync();
+                _dbSet.Update(publicationPlanTable);
+                _context.SaveChanges();
 
-                return _publicationPlanTable;
+                return publicationPlanTable;
             }
 
             return null;

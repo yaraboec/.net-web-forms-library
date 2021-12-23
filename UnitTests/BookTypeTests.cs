@@ -9,7 +9,7 @@ using Services.Services;
 
 namespace UnitTests
 {
-    public class BookTypeServices
+    public class BookTypeTests
     {
         private static Guid ExistingId = Guid.NewGuid();
         private static Guid NonExistingId = Guid.NewGuid();
