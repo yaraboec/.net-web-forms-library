@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using DataAccess.Context;
 using DataAccess.Entities;
+using DataAccess.Repositories;
+using DataAccess.Repositories.PublicationPlanTableRepository;
 using Services.Contracts;
 using Services.Services;
 
@@ -9,8 +12,12 @@ namespace XAI_BIBLE
 {
     public partial class Register : Form
     {
+        XaiBibleContext _context;
+        IPublicationPlanTableRepository _repository;
+        IPublicationPlanTableService _serviceTable;
         private IAccountService _service;
         private Login _loginForm;
+
         public Register()
         {
             InitializeComponent();
@@ -19,6 +26,9 @@ namespace XAI_BIBLE
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             UpdateStyles();
             _service = new AccountService();
+            _context = new XaiBibleContext();
+            _repository = new PublicationPlanTableRepository(_context);
+            _serviceTable = new PublicationPlanTableService(_repository);
         }
 
         private void txtBox_RegisterLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -157,6 +167,15 @@ namespace XAI_BIBLE
 
             if (password == confirmPassword && login != "")
             {
+                var userExists = _service.GetGuidByUsername(login);
+
+                if (userExists != null)
+                {
+                    MessageBox.Show("Користувач із таким ім'ям вже існує", "", MessageBoxButtons.OK);
+
+                    return;
+                }
+
                 User user = new User
                 {
                     Username = login,
@@ -166,6 +185,11 @@ namespace XAI_BIBLE
                 _service.Register(user);
                 _loginForm.Show();
                 this.Hide();
+                var planTable = new PublicationPlanTable()
+                {
+                    UserId = new Guid(_service.GetGuidByUsername(login))
+                };
+                _serviceTable.Create(planTable);
             }
             else
             {
