@@ -41,7 +41,7 @@ namespace XAI_BIBLE
             txtBox_RegisterLogin.ForeColor = Color.Gray;
             txtBox_RegisterPassword.Text = "Пароль";
             txtBox_RegisterPassword.ForeColor = Color.Gray;
-            txtBox_RegisterConfirmPassword.Text = "Підтвердіть Пароль";
+            txtBox_RegisterConfirmPassword.Text = "Підтвердіть пароль";
             txtBox_RegisterConfirmPassword.ForeColor = Color.Gray;
         }
 
@@ -123,7 +123,7 @@ namespace XAI_BIBLE
 
         private void txtBox_RegisterConfirmPassword_MouseDown(object sender, MouseEventArgs e)
         {
-            if (txtBox_RegisterConfirmPassword.Text == "Підтвердіть Пароль")
+            if (txtBox_RegisterConfirmPassword.Text == "Підтвердіть пароль")
             {
                 txtBox_RegisterConfirmPassword.Clear();
                 txtBox_RegisterConfirmPassword.UseSystemPasswordChar = true;
@@ -134,7 +134,7 @@ namespace XAI_BIBLE
         {
             if (txtBox_RegisterConfirmPassword.Text == "")
             {
-                txtBox_RegisterConfirmPassword.Text = "Підтвердіть Пароль";
+                txtBox_RegisterConfirmPassword.Text = "Підтвердіть пароль";
                 txtBox_RegisterConfirmPassword.ForeColor = Color.Gray;
                 txtBox_RegisterConfirmPassword.UseSystemPasswordChar = false;
             }
@@ -227,6 +227,13 @@ namespace XAI_BIBLE
             {
                 txtBox_RegisterPassword.UseSystemPasswordChar = true;
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Програмне забезпечення призначене для використання викладацьким складом кафедри 603 НАУ „ХАІ”. " +
+                            "ПЗ поширюється у відкритому вигляді на сумлінній угоді. " +
+                            "Приємного користування.", "", MessageBoxButtons.OK);
         }
     }
 }
