@@ -119,5 +119,21 @@ namespace XAI_BIBLE.AdminForms
             _parentForm.Show();
             this.Close();
         }
+
+        Point lastPoint;
+
+        private void BookName_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void BookName_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
     }
 }

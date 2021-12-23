@@ -117,5 +117,22 @@ namespace XAI_BIBLE.AdminForms
                 dataGridView1.Rows.Add(discipline.Name, discipline.Id);
             }
         }
+
+        Point lastPoint;
+
+        private void Discipline_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void Discipline_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
     }
 }
