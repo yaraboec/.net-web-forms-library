@@ -113,9 +113,6 @@ namespace XAI_BIBLE
         private void Dataview_Load(object sender, EventArgs e)
         {
             toolStripButtonAdmin.Visible = _username == "admin";
-            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGrid.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
             var plans = _publicationPlanService.GetAllbyPublicationPlanTableId(_planTableId);
             var counter = 0;
@@ -136,6 +133,11 @@ namespace XAI_BIBLE
             {
                 return plan.ProgramPlans.Aggregate("", (current, program) => current + (program.EducationalProgram.Name + "\n"));
             }
+
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGrid.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            this.Width = dataGrid.Width + 50;
         }
 
         public void getUsernameByLogin(string username, Guid userId, Login parentForm)
@@ -249,6 +251,11 @@ namespace XAI_BIBLE
             {
                 return plan.ProgramPlans.Aggregate("", (current, program) => current + (program.EducationalProgram.Name + "\n"));
             }
+
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGrid.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            this.Width = dataGrid.Width + 50;
         }
 
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
