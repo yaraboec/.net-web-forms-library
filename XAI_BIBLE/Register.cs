@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
-using DataAccess.Context;
 using DataAccess.Entities;
-using DataAccess.Repositories.UserRepository;
 using Services.Contracts;
 using Services.Services;
 
