@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
-using Word = Microsoft.Office.Interop.Word;
 using System.IO;
 using System.Linq;
+using System.IO;
+using System.Reflection;
+using ClosedXML.Excel;
 using DataAccess.Context;
 using DataAccess.Entities;
 using DataAccess.Repositories;
@@ -13,15 +14,19 @@ using DataAccess.Repositories.BookNameRepository;
 using DataAccess.Repositories.ProgramPlanRepository;
 using DataAccess.Repositories.PublicationPlanRepository;
 using DataAccess.Repositories.PublicationPlanTableRepository;
+using Microsoft.Office.Interop.Word;
 using Services.Contracts;
 using Services.Services;
 using BookAuthor = XAI_BIBLE.AdminForms.BookAuthor;
 using BookName = XAI_BIBLE.AdminForms.BookName;
 using BookType = XAI_BIBLE.AdminForms.BookType;
+using DataTable = System.Data.DataTable;
 using Discipline = XAI_BIBLE.AdminForms.Discipline;
 using EducationalProgram = XAI_BIBLE.AdminForms.EducationalProgram;
 using Language = XAI_BIBLE.AdminForms.Language;
 using MethodPublication = XAI_BIBLE.AdminForms.MethodPublication;
+using Point = System.Drawing.Point;
+using Rectangle = System.Drawing.Rectangle;
 using Speciality = XAI_BIBLE.AdminForms.Speciality;
 
 namespace XAI_BIBLE
@@ -237,12 +242,12 @@ namespace XAI_BIBLE
             string GetAuthors(PublicationPlan plan)
             {
                 return plan.AuthorPlans.Aggregate("", (current, author) =>
-                    current + (author.BookAuthor.Surname + " " + author.BookAuthor.Name + " " + author.BookAuthor.MiddleName + "\n"));
+                    current + (author.BookAuthor.Surname + " " + author.BookAuthor.Name + " " + author.BookAuthor.MiddleName + "\n "));
             }
 
             string GetPrograms(PublicationPlan plan)
             {
-                return plan.ProgramPlans.Aggregate("", (current, program) => current + (program.EducationalProgram.Name + "\n"));
+                return plan.ProgramPlans.Aggregate("", (current, program) => current + (program.EducationalProgram.Name + "\n "));
             }
 
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
@@ -253,174 +258,88 @@ namespace XAI_BIBLE
 
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Excel Documents (*.xls)|*.xls";
-            sfd.FileName = "Inventory_Adjustment_Export.xls";
-            if (sfd.ShowDialog() == DialogResult.OK)
+            //Creating DataTable
+            DataTable dt = new DataTable();
+
+            //Adding the Columns
+            foreach (DataGridViewColumn column in dataGrid.Columns)
             {
+                dt.Columns.Add(column.HeaderText);
+            }
 
-                copyAlltoClipboard();
-
-                object misValue = System.Reflection.Missing.Value;
-                Excel.Application xlexcel = new Excel.Application();
-
-                xlexcel.DisplayAlerts = false;
-                Excel.Workbook xlWorkBook = xlexcel.Workbooks.Add(misValue);
-                Excel.Worksheet xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-
-                for (int i = 1; i < dataGrid.Columns.Count + 1; i++)
+            //Adding the Rows
+            foreach (DataGridViewRow row in dataGrid.Rows)
+            {
+                dt.Rows.Add();
+                foreach (DataGridViewCell cell in row.Cells)
                 {
-                    xlWorkSheet.Cells[1, i] = dataGrid.Columns[i - 1].HeaderText;
+                    if (cell.Value == null) break;
+                    dt.Rows[dt.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
                 }
-
-                Excel.Range rng = xlWorkSheet.get_Range("D:D").Cells;
-                rng.NumberFormat = "@";
-
-                Excel.Range CR = (Excel.Range)xlWorkSheet.Cells[2, 1];
-                CR.Select();
-
-                xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
-
-                Excel.Range delRng = xlWorkSheet.get_Range("A:A").Cells;
-                delRng.Delete(Type.Missing);
-                xlWorkSheet.get_Range("A1").Select();
-
-                xlWorkBook.SaveAs(sfd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlexcel.DisplayAlerts = true;
-                xlWorkBook.Close(true, misValue, misValue);
-                xlexcel.Quit();
-
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlexcel);
-
-                Clipboard.Clear();
-                dataGrid.ClearSelection();
-
-                if (File.Exists(sfd.FileName))
-                    System.Diagnostics.Process.Start(sfd.FileName);
             }
-        }
-        private void copyAlltoClipboard()
-        {
-            dataGrid.SelectAll();
-            DataObject dataObj = dataGrid.GetClipboardContent();
-            if (dataObj != null)
-                Clipboard.SetDataObject(dataObj);
-        }
 
-        private void releaseObject(object obj)
-        {
-            try
+            //Exporting to Excel
+            string startupPath = System.IO.Directory.GetCurrentDirectory();
+            string folderPath = startupPath;
+            if (!Directory.Exists(folderPath))
             {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
+                Directory.CreateDirectory(folderPath);
             }
-            catch (Exception ex)
+            using (XLWorkbook wb = new XLWorkbook())
             {
-                obj = null;
-                MessageBox.Show("Exception Occurred while releasing object " + ex.ToString());
+                var a = wb.Worksheets.Add(dt, "PublicationTable");
+                a.Style.Alignment.WrapText = true;
+                a.Columns().AdjustToContents();
+                wb.SaveAs("DataGridViewExport.xlsx");
             }
-            finally
-            {
-                GC.Collect();
-            }
+
+            MessageBox.Show("Успішно конвертовано", "", MessageBoxButtons.OK);
         }
 
         private void wordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog sfd = new SaveFileDialog();
+            //Table start.
+            string html = "<table cellpadding='5' cellspacing='0' style='border: 1px solid #ccc;font-size: 9pt;font-family:arial'>";
 
-            sfd.Filter = "Word Documents (*.docx)|*.docx";
-
-            sfd.FileName = "export.docx";
-
-            if (sfd.ShowDialog() == DialogResult.OK)
+            //Adding HeaderRow.
+            html += "<tr>";
+            foreach (DataGridViewColumn column in dataGrid.Columns)
             {
-
-                Export_Data_To_Word(dataGrid, sfd.FileName);
+                html += "<th style='background-color: #B8DBFD;border: 1px solid #ccc'>" + column.HeaderText + "</th>";
             }
-        }
-        public void Export_Data_To_Word(DataGridView DGV, string filename)
-        {
-            if (DGV.Rows.Count != 0)
+            html += "</tr>";
+
+            //Adding DataRow.
+            foreach (DataGridViewRow row in dataGrid.Rows)
             {
-                int RowCount = DGV.Rows.Count;
-                int ColumnCount = DGV.Columns.Count;
-                Object[,] DataArray = new object[RowCount + 1, ColumnCount + 1];
-
-                int r = 0;
-                for (int c = 0; c <= ColumnCount - 1; c++)
+                html += "<tr>";
+                foreach (DataGridViewCell cell in row.Cells)
                 {
-                    for (r = 0; r <= RowCount - 1; r++)
-                    {
-                        DataArray[r, c] = DGV.Rows[r].Cells[c].Value;
-                    }
+                    if (cell.Value == null) break;
+                    html += "<td style='width:120px;border: 1px solid #ccc'>" + cell.Value.ToString() + "</td>";
                 }
-
-                Word.Document oDoc = new Word.Document();
-                oDoc.Application.Visible = true;
-
-                oDoc.PageSetup.Orientation = Word.WdOrientation.wdOrientLandscape;
-
-                dynamic oRange = oDoc.Content.Application.Selection.Range;
-                string oTemp = "";
-                for (r = 0; r <= RowCount - 1; r++)
-                {
-                    for (int c = 0; c <= ColumnCount - 1; c++)
-                    {
-                        oTemp = oTemp + DataArray[r, c] + "\t";
-
-                    }
-                }
-
-                oRange.Text = oTemp;
-
-                object Separator = Word.WdTableFieldSeparator.wdSeparateByTabs;
-                object ApplyBorders = true;
-                object AutoFit = true;
-                object AutoFitBehavior = Word.WdAutoFitBehavior.wdAutoFitContent;
-
-                oRange.ConvertToTable(ref Separator, ref RowCount, ref ColumnCount,
-                                      Type.Missing, Type.Missing, ref ApplyBorders,
-                                      Type.Missing, Type.Missing, Type.Missing,
-                                      Type.Missing, Type.Missing, Type.Missing,
-                                      Type.Missing, ref AutoFit, ref AutoFitBehavior, Type.Missing);
-
-                oRange.Select();
-
-                oDoc.Application.Selection.Tables[1].Select();
-                oDoc.Application.Selection.Tables[1].Rows.AllowBreakAcrossPages = 0;
-                oDoc.Application.Selection.Tables[1].Rows.Alignment = 0;
-                oDoc.Application.Selection.Tables[1].Rows[1].Select();
-                oDoc.Application.Selection.InsertRowsAbove(1);
-                oDoc.Application.Selection.Tables[1].Rows[1].Select();
-
-                oDoc.Application.Selection.Tables[1].Rows[1].Range.Bold = 1;
-                oDoc.Application.Selection.Tables[1].Rows[1].Range.Font.Name = "Tahoma";
-                oDoc.Application.Selection.Tables[1].Rows[1].Range.Font.Size = 14;
-
-                for (int c = 0; c <= ColumnCount - 1; c++)
-                {
-                    oDoc.Application.Selection.Tables[1].Cell(1, c + 1).Range.Text = DGV.Columns[c].HeaderText;
-                }
-
-                oDoc.Application.Selection.Tables[1].set_Style(Word.WdBuiltinStyle.wdStyleTableMediumGrid1);
-                oDoc.Application.Selection.Tables[1].Rows[1].Select();
-                oDoc.Application.Selection.Cells.VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
-
-                foreach (Word.Section section in oDoc.Application.ActiveDocument.Sections)
-                {
-                    Word.Range headerRange = section.Headers[Word.WdHeaderFooterIndex.wdHeaderFooterPrimary].Range;
-                    headerRange.Fields.Add(headerRange, Word.WdFieldType.wdFieldPage);
-                    headerRange.Text = "Звіти";
-                    headerRange.Font.Size = 16;
-                    headerRange.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
-                }
-
-                oDoc.SaveAs2(filename);
+                html += "</tr>";
             }
+
+            //Table end.
+            html += "</table>";
+
+            //Save the HTML string as HTML File.
+            string startupPath = System.IO.Directory.GetCurrentDirectory();
+            File.WriteAllText(@startupPath + "\\htmlTemp.html", html);
+
+            //Convert the HTML File to Word document.
+            Microsoft.Office.Interop.Word._Application word = new Microsoft.Office.Interop.Word.Application();
+            Microsoft.Office.Interop.Word._Document wordDoc = word.Documents.Open(FileName: startupPath + "\\htmlTemp.html", ReadOnly: false);
+            wordDoc.Sections.PageSetup.Orientation = WdOrientation.wdOrientLandscape;
+            wordDoc.SaveAs(FileName: startupPath + "\\PublicationPlan.doc", FileFormat: Microsoft.Office.Interop.Word.WdSaveFormat.wdFormatRTF);
+            ((Microsoft.Office.Interop.Word._Document)wordDoc).Close();
+            ((Microsoft.Office.Interop.Word._Application)word).Quit();
+
+            //Delete the HTML File.
+            File.Delete(startupPath + "\\htmlTemp.html");
+
+            MessageBox.Show("Успішно конвертовано", "", MessageBoxButtons.OK);
         }
 
         private void методиПублікаційToolStripMenuItem_Click(object sender, EventArgs e)
