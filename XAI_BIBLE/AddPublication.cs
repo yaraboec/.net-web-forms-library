@@ -120,6 +120,13 @@ namespace XAI_BIBLE
             comboBox4.SelectedIndex = 0;
             comboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            comboBoxGuidDIS.Visible = false;
+            comboBoxGuidSPEC.Visible = false;
+            comboBoxGuidLAN.Visible = false;
+            comboBoxGuidMethod.Visible = false;
+            checkedListBoxGuidAUTHORS.Visible = false;
+            checkedListBoxGuidPROG.Visible = false;
+
             foreach (var bookAuthor in bookAuthors)
             {
                 checkedListBox1.Items.Add(bookAuthor.Surname + " " + bookAuthor.Name + " " + bookAuthor.MiddleName);
@@ -189,6 +196,14 @@ namespace XAI_BIBLE
             for (var i = 0; i < checkedListBox2.Items.Count; i++)
             {
                 checkedListBoxGuidPROG.SetItemChecked(i, checkedListBox2.GetItemChecked(i));
+            }
+
+            if (numericUpDown1.Value != 0
+                && numericUpDown2.Value != 0
+                && checkedListBoxGuidAUTHORS.CheckedItems.Count != 0
+                && checkedListBoxGuidPROG.CheckedItems.Count != 0)
+            {
+                
             }
         }
 
