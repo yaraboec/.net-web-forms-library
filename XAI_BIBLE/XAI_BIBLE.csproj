@@ -236,6 +236,18 @@
     <Compile Include="AdminForms\EditorAdminForms\LanguageEditor.Designer.cs">
       <DependentUpon>LanguageEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\MethodPublicationEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\MethodPublicationEditor.Designer.cs">
+      <DependentUpon>MethodPublicationEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\SpecialityEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\EditorAdminForms\SpecialityEditor.Designer.cs">
+      <DependentUpon>SpecialityEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\EducationalProgram.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +324,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\EditorAdminForms\LanguageEditor.resx">
       <DependentUpon>LanguageEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\EditorAdminForms\MethodPublicationEditor.resx">
+      <DependentUpon>MethodPublicationEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\EditorAdminForms\SpecialityEditor.resx">
+      <DependentUpon>SpecialityEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\EducationalProgram.resx">
       <DependentUpon>EducationalProgram.cs</DependentUpon>
