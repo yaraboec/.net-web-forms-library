@@ -184,9 +184,13 @@
       <DependentUpon>20211222132327_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\XaiBibleContextModelSnapshot.cs" />
+    <Compile Include="Repositories\AuthorPlanRepository\AuthorPlanRepository.cs" />
+    <Compile Include="Repositories\AuthorPlanRepository\IAuthorPlanRepository.cs" />
     <Compile Include="Repositories\BookNameRepository\BookNameRepository.cs" />
     <Compile Include="Repositories\BookNameRepository\IBookNameRepository.cs" />
     <Compile Include="Repositories\ISqlRepository.cs" />
+    <Compile Include="Repositories\ProgramPlanRepository\IProgramPlanRepository.cs" />
+    <Compile Include="Repositories\ProgramPlanRepository\ProgramPlanRepository.cs" />
     <Compile Include="Repositories\PublicationPlanRepository\IPublicationPlanRepository.cs" />
     <Compile Include="Repositories\PublicationPlanRepository\PublicationPlanRepository.cs" />
     <Compile Include="Repositories\PublicationPlanTableRepository\IPublicationPlanTableRepository.cs" />
