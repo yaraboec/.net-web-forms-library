@@ -129,6 +129,7 @@
             this.txtBox_RegisterPassword.Name = "txtBox_RegisterPassword";
             this.txtBox_RegisterPassword.Size = new System.Drawing.Size(256, 29);
             this.txtBox_RegisterPassword.TabIndex = 46;
+            this.txtBox_RegisterPassword.UseSystemPasswordChar = true;
             this.txtBox_RegisterPassword.Enter += new System.EventHandler(this.txtBox_RegisterPassword_Enter);
             this.txtBox_RegisterPassword.Leave += new System.EventHandler(this.txtBox_RegisterPassword_Leave);
             this.txtBox_RegisterPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtBox_RegisterPassword_MouseDown);
@@ -141,6 +142,7 @@
             this.txtBox_RegisterConfirmPassword.Name = "txtBox_RegisterConfirmPassword";
             this.txtBox_RegisterConfirmPassword.Size = new System.Drawing.Size(256, 29);
             this.txtBox_RegisterConfirmPassword.TabIndex = 54;
+            this.txtBox_RegisterConfirmPassword.UseSystemPasswordChar = true;
             this.txtBox_RegisterConfirmPassword.Enter += new System.EventHandler(this.txtBox_RegisterConfirmPassword_Enter);
             this.txtBox_RegisterConfirmPassword.Leave += new System.EventHandler(this.txtBox_RegisterConfirmPassword_Leave);
             this.txtBox_RegisterConfirmPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtBox_RegisterConfirmPassword_MouseDown);
@@ -190,9 +192,9 @@
             this.chkBox_Remember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.chkBox_Remember.Location = new System.Drawing.Point(137, 371);
             this.chkBox_Remember.Name = "chkBox_Remember";
-            this.chkBox_Remember.Size = new System.Drawing.Size(211, 46);
+            this.chkBox_Remember.Size = new System.Drawing.Size(254, 46);
             this.chkBox_Remember.TabIndex = 58;
-            this.chkBox_Remember.Text = "Я даю згоду на обробку \r\nособистих даних";
+            this.chkBox_Remember.Text = "Я ознайомлений з \r\nкористувальницькою угодою";
             this.chkBox_Remember.UseVisualStyleBackColor = false;
             this.chkBox_Remember.CheckedChanged += new System.EventHandler(this.chkBox_Remember_CheckedChanged);
             // 
