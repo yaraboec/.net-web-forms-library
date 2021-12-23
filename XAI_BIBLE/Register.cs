@@ -102,6 +102,7 @@ namespace XAI_BIBLE
             if (txtBox_RegisterPassword.Text == "Пароль")
             {
                 txtBox_RegisterPassword.Clear();
+                txtBox_RegisterPassword.UseSystemPasswordChar = true;
             }
         }
 
@@ -111,6 +112,7 @@ namespace XAI_BIBLE
             {
                 txtBox_RegisterPassword.Text = "Пароль";
                 txtBox_RegisterPassword.ForeColor = Color.Gray;
+                txtBox_RegisterPassword.UseSystemPasswordChar = false;
             }
         }
 
@@ -124,6 +126,7 @@ namespace XAI_BIBLE
             if (txtBox_RegisterConfirmPassword.Text == "Підтвердіть Пароль")
             {
                 txtBox_RegisterConfirmPassword.Clear();
+                txtBox_RegisterConfirmPassword.UseSystemPasswordChar = true;
             }
         }
 
@@ -133,17 +136,19 @@ namespace XAI_BIBLE
             {
                 txtBox_RegisterConfirmPassword.Text = "Підтвердіть Пароль";
                 txtBox_RegisterConfirmPassword.ForeColor = Color.Gray;
+                txtBox_RegisterConfirmPassword.UseSystemPasswordChar = false;
             }
         }
 
         private void txtBox_RegisterConfirmPassword_Enter(object sender, EventArgs e)
         {
             txtBox_RegisterConfirmPassword.ForeColor = Color.Black;
+            txtBox_RegisterConfirmPassword.UseSystemPasswordChar = true;
         }
 
         private void Register_Shown(object sender, EventArgs e)
         {
-            bttn_RegisterButton.Focus();
+            bttn_RegisterLinkLabel.Focus();
             txtBox_RegisterPassword.ForeColor = Color.Gray;
         }
 
@@ -205,6 +210,22 @@ namespace XAI_BIBLE
             {
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void txtBox_RegisterPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBox_RegisterPassword.Text == "")
+            {
+                txtBox_RegisterPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txtBox_RegisterConfirmPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBox_RegisterPassword.Text == "")
+            {
+                txtBox_RegisterPassword.UseSystemPasswordChar = true;
             }
         }
     }
