@@ -248,6 +248,18 @@
     <Compile Include="AdminForms\Language.Designer.cs">
       <DependentUpon>Language.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForms\MethodPublication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\MethodPublication.Designer.cs">
+      <DependentUpon>MethodPublication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\Speciality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\Speciality.Designer.cs">
+      <DependentUpon>Speciality.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dataview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -306,6 +318,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\Language.resx">
       <DependentUpon>Language.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\MethodPublication.resx">
+      <DependentUpon>MethodPublication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\Speciality.resx">
+      <DependentUpon>Speciality.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dataview.resx">
       <DependentUpon>Dataview.cs</DependentUpon>
