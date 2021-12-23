@@ -34,11 +34,11 @@ namespace Services.Services
             return account != null && BC.Verify(model.Password, account.Password);
         }
 
-        public Guid GetGuidByUsername(string username)
+        public string GetGuidByUsername(string username)
         {
             var account = _service.GetByUsername(username);
 
-            return account.Id;
+            return account != null ? account.Id.ToString() : null;
         }
     }
 }

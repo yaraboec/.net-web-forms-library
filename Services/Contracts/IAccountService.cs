@@ -11,6 +11,6 @@ namespace Services.Contracts
         void Register(User model);
         bool Authenticate(User model);
 
-        Guid GetGuidByUsername(string username);
+        string GetGuidByUsername(string username);
     }
 }
