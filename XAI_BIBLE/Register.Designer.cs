@@ -41,6 +41,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.chkBox_Remember = new System.Windows.Forms.CheckBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Avatar)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -129,6 +130,7 @@
             this.txtBox_RegisterPassword.Name = "txtBox_RegisterPassword";
             this.txtBox_RegisterPassword.Size = new System.Drawing.Size(256, 29);
             this.txtBox_RegisterPassword.TabIndex = 46;
+            this.txtBox_RegisterPassword.TextChanged += new System.EventHandler(this.txtBox_RegisterPassword_TextChanged);
             this.txtBox_RegisterPassword.Enter += new System.EventHandler(this.txtBox_RegisterPassword_Enter);
             this.txtBox_RegisterPassword.Leave += new System.EventHandler(this.txtBox_RegisterPassword_Leave);
             this.txtBox_RegisterPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtBox_RegisterPassword_MouseDown);
@@ -141,6 +143,7 @@
             this.txtBox_RegisterConfirmPassword.Name = "txtBox_RegisterConfirmPassword";
             this.txtBox_RegisterConfirmPassword.Size = new System.Drawing.Size(256, 29);
             this.txtBox_RegisterConfirmPassword.TabIndex = 54;
+            this.txtBox_RegisterConfirmPassword.TextChanged += new System.EventHandler(this.txtBox_RegisterConfirmPassword_TextChanged);
             this.txtBox_RegisterConfirmPassword.Enter += new System.EventHandler(this.txtBox_RegisterConfirmPassword_Enter);
             this.txtBox_RegisterConfirmPassword.Leave += new System.EventHandler(this.txtBox_RegisterConfirmPassword_Leave);
             this.txtBox_RegisterConfirmPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.txtBox_RegisterConfirmPassword_MouseDown);
@@ -190,11 +193,25 @@
             this.chkBox_Remember.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.chkBox_Remember.Location = new System.Drawing.Point(137, 371);
             this.chkBox_Remember.Name = "chkBox_Remember";
-            this.chkBox_Remember.Size = new System.Drawing.Size(211, 46);
+            this.chkBox_Remember.Size = new System.Drawing.Size(167, 46);
             this.chkBox_Remember.TabIndex = 58;
-            this.chkBox_Remember.Text = "Я даю згоду на обробку \r\nособистих даних";
+            this.chkBox_Remember.Text = "Я ознайомлений з\r\n\r\n";
             this.chkBox_Remember.UseVisualStyleBackColor = false;
             this.chkBox_Remember.CheckedChanged += new System.EventHandler(this.chkBox_Remember_CheckedChanged);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.linkLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.linkLabel1.LinkColor = System.Drawing.Color.DeepSkyBlue;
+            this.linkLabel1.Location = new System.Drawing.Point(153, 391);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(235, 21);
+            this.linkLabel1.TabIndex = 59;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "користувальницькою угодою";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // Register
             // 
@@ -202,6 +219,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
             this.ClientSize = new System.Drawing.Size(528, 586);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.chkBox_Remember);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button1);
@@ -244,5 +262,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.CheckBox chkBox_Remember;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

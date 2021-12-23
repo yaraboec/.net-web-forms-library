@@ -41,6 +41,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.registerlabel = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -102,9 +103,9 @@
             this.Column2,
             this.Column3,
             this.Column_Id});
-            this.dataGridView1.Location = new System.Drawing.Point(28, 34);
+            this.dataGridView1.Location = new System.Drawing.Point(28, 71);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(626, 410);
+            this.dataGridView1.Size = new System.Drawing.Size(626, 373);
             this.dataGridView1.TabIndex = 47;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -141,12 +142,25 @@
             this.imageList1.Images.SetKeyName(0, "outline_settings_suggest_black_24dp.png");
             this.imageList1.Images.SetKeyName(1, "outline_delete_black_24dp.png");
             // 
+            // registerlabel
+            // 
+            this.registerlabel.AutoSize = true;
+            this.registerlabel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.registerlabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registerlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.registerlabel.Location = new System.Drawing.Point(264, 40);
+            this.registerlabel.Name = "registerlabel";
+            this.registerlabel.Size = new System.Drawing.Size(145, 25);
+            this.registerlabel.TabIndex = 51;
+            this.registerlabel.Text = "Автори ( П.І.Б )";
+            // 
             // BookAuthor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
             this.ClientSize = new System.Drawing.Size(683, 469);
+            this.Controls.Add(this.registerlabel);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.background);
             this.Controls.Add(this.toolStrip1);
@@ -156,6 +170,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookAuthor";
             this.Load += new System.EventHandler(this.BookAuthor_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookAuthor_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BookAuthor_MouseMove);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();
@@ -177,5 +193,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_Id;
+        private System.Windows.Forms.Label registerlabel;
     }
 }

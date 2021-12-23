@@ -35,9 +35,10 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.background = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.registerlabel = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -97,17 +98,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.id});
-            this.dataGridView1.Location = new System.Drawing.Point(28, 34);
+            this.dataGridView1.Location = new System.Drawing.Point(28, 65);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(350, 159);
+            this.dataGridView1.Size = new System.Drawing.Size(350, 128);
             this.dataGridView1.TabIndex = 47;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Column1
             // 
@@ -121,12 +116,31 @@
             this.id.Name = "id";
             this.id.Visible = false;
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // registerlabel
+            // 
+            this.registerlabel.AutoSize = true;
+            this.registerlabel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.registerlabel.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registerlabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.registerlabel.Location = new System.Drawing.Point(110, 37);
+            this.registerlabel.Name = "registerlabel";
+            this.registerlabel.Size = new System.Drawing.Size(190, 25);
+            this.registerlabel.TabIndex = 51;
+            this.registerlabel.Text = "Для яких дисциплін";
+            // 
             // Discipline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
             this.ClientSize = new System.Drawing.Size(405, 218);
+            this.Controls.Add(this.registerlabel);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.background);
             this.Controls.Add(this.toolStrip1);
@@ -135,6 +149,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookAuthor";
             this.Load += new System.EventHandler(this.Discipline_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Discipline_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Discipline_MouseMove);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();
@@ -154,5 +170,6 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.Label registerlabel;
     }
 }

@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
-using DataAccess.Context;
 using DataAccess.Entities;
-using DataAccess.Repositories;
-using Microsoft.EntityFrameworkCore;
 using Services.Contracts;
 using Services.Services;
 
@@ -186,7 +177,7 @@ namespace XAI_BIBLE
                     txtBox_Password.Text = "";
                 }
                 Dataview dataView = new Dataview();
-                dataView.getUsernameByLogin(login, this);
+                dataView.getUsernameByLogin(login, _service.GetGuidByUsername(login), this);
                 dataView.Show();
             }
             else

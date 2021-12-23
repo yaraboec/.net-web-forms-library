@@ -170,6 +170,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPublication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPublication.Designer.cs">
+      <DependentUpon>AddPublication.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\BookAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddPublication.resx">
+      <DependentUpon>AddPublication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\BookAuthor.resx">
       <DependentUpon>BookAuthor.cs</DependentUpon>
     </EmbeddedResource>
