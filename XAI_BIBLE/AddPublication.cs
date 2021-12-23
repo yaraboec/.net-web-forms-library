@@ -49,6 +49,8 @@ namespace XAI_BIBLE
         private IPublicationPlanTableService _publicationPlanTableService;
         private Dataview _parentForm;
         private Guid _userId;
+        private Guid _planTableId;
+        private Guid _publicationPlanId;
 
         public AddPublication()
         {
@@ -86,6 +88,7 @@ namespace XAI_BIBLE
             var methodPublications = _methodPublicationService.GetAll().ToList();
             var bookAuthors = _bookAuthorService.GetAll().ToList();
             var educationalPrograms = _educationalProgramService.GetAll().ToList();
+            var bookNames = _bookNameService.GetAll().ToList();
 
             foreach (var discipline in disciplines)
             {
@@ -111,6 +114,12 @@ namespace XAI_BIBLE
                 comboBoxGuidMethod.Items.Add(methodPublication.Id);
             }
 
+            foreach (var bookName in bookNames)
+            {
+                comboBox5.Items.Add(bookName.Name + " " + bookName.BookType.Type);
+                comboBoxGuidNameBook.Items.Add(bookName.Id);
+            }
+
             comboBox1.SelectedIndex = 0;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.SelectedIndex = 0;
@@ -119,11 +128,14 @@ namespace XAI_BIBLE
             comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox4.SelectedIndex = 0;
             comboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox5.SelectedIndex = 0;
+            comboBox5.DropDownStyle = ComboBoxStyle.DropDownList;
 
             comboBoxGuidDIS.Visible = false;
             comboBoxGuidSPEC.Visible = false;
             comboBoxGuidLAN.Visible = false;
             comboBoxGuidMethod.Visible = false;
+            comboBoxGuidNameBook.Visible = false;
             checkedListBoxGuidAUTHORS.Visible = false;
             checkedListBoxGuidPROG.Visible = false;
 
@@ -144,6 +156,7 @@ namespace XAI_BIBLE
         {
             _parentForm = parentForm;
             _userId = userId;
+            _planTableId = _publicationPlanTableService.GetPlanTableByUserId(_userId);
             parentForm.Hide();
         }
 
@@ -203,7 +216,29 @@ namespace XAI_BIBLE
                 && checkedListBoxGuidAUTHORS.CheckedItems.Count != 0
                 && checkedListBoxGuidPROG.CheckedItems.Count != 0)
             {
-                
+                _publicationPlanId = Guid.NewGuid();
+
+                _publicationPlanService.Create(new PublicationPlan()
+                {
+                    Id = _publicationPlanId,
+                    Course = (int)numericUpDown1.Value,
+                    BookNameId = new Guid(comboBoxGuidNameBook.Text),
+                    SpecialityId = new Guid(comboBoxGuidSPEC.Text),
+                    DisciplineId = new Guid(comboBoxGuidDIS.Text),
+                    Pages = (int)numericUpDown2.Value,
+                    Overhead = (int)numericUpDown3.Value,
+                    LanguageId = new Guid(comboBoxGuidLAN.Text),
+                    MethodPublicationId = new Guid(comboBoxGuidMethod.Text),
+                    WillPublish = checkBox1.Checked,
+                    PublicationPlanTableId = _planTableId
+                });
+
+                this.LinkByAuthorAndPublicationPlans();
+                this.LinkByProgramAndPublicationPlans();
+
+                //_parentForm.UpdateDataInGrid(); UPDATE
+                _parentForm.Show();
+                this.Close();
             }
         }
 
@@ -225,6 +260,41 @@ namespace XAI_BIBLE
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxGuidMethod.SelectedIndex = comboBox4.SelectedIndex;
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxGuidNameBook.SelectedIndex = comboBox5.SelectedIndex;
+        }
+
+        private void LinkByAuthorAndPublicationPlans()
+        {
+            var checkedAuthors = (from object ab in checkedListBoxGuidAUTHORS.CheckedItems select new Guid(ab.ToString())).ToList();
+
+            foreach (var authorId in checkedAuthors)
+            {
+                _authorPlanService.Create(new AuthorPlan()
+                {
+                    Id = Guid.NewGuid(),
+                    BookAuthorId = authorId,
+                    PublicationPlanId = _publicationPlanId
+                });
+            }
+        }
+
+        private void LinkByProgramAndPublicationPlans()
+        {
+            var checkedPrograms = (from object ab in checkedListBoxGuidPROG.CheckedItems select new Guid(ab.ToString())).ToList();
+
+            foreach (var programId in checkedPrograms)
+            {
+                _programPlanService.Create(new ProgramPlan()
+                {
+                    Id = Guid.NewGuid(),
+                    EducationalProgramId = programId,
+                    PublicationPlanId = _publicationPlanId
+                });
+            }
         }
     }
 }

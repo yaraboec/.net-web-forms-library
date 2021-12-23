@@ -69,5 +69,12 @@ namespace DataAccess.Repositories.PublicationPlanTableRepository
 
             return null;
         }
+
+        public Guid GetPlanTableByUserId(Guid id)
+        {
+            var entity = _dbSet.FirstOrDefault(tableId => tableId.UserId == id);
+            
+            return entity.Id;
+        }
     }
 }

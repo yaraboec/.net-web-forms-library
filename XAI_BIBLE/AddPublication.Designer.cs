@@ -61,6 +61,9 @@ namespace XAI_BIBLE
             this.comboBoxGuidMethod = new System.Windows.Forms.ComboBox();
             this.checkedListBoxGuidAUTHORS = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxGuidPROG = new System.Windows.Forms.CheckedListBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxGuidNameBook = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -275,7 +278,7 @@ namespace XAI_BIBLE
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.checkBox1.Location = new System.Drawing.Point(235, 424);
+            this.checkBox1.Location = new System.Drawing.Point(235, 432);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(130, 25);
             this.checkBox1.TabIndex = 19;
@@ -287,7 +290,7 @@ namespace XAI_BIBLE
             this.button1.BackColor = System.Drawing.Color.ForestGreen;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(211, 455);
+            this.button1.Location = new System.Drawing.Point(211, 463);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 41);
             this.button1.TabIndex = 48;
@@ -322,7 +325,7 @@ namespace XAI_BIBLE
             this.background.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.background.Location = new System.Drawing.Point(34, 42);
             this.background.Name = "background";
-            this.background.Size = new System.Drawing.Size(522, 349);
+            this.background.Size = new System.Drawing.Size(522, 376);
             this.background.TabIndex = 59;
             this.background.TabStop = false;
             // 
@@ -338,9 +341,9 @@ namespace XAI_BIBLE
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.pictureBox2.Location = new System.Drawing.Point(34, 397);
+            this.pictureBox2.Location = new System.Drawing.Point(34, 424);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(522, 117);
+            this.pictureBox2.Size = new System.Drawing.Size(522, 90);
             this.pictureBox2.TabIndex = 61;
             this.pictureBox2.TabStop = false;
             // 
@@ -371,7 +374,7 @@ namespace XAI_BIBLE
             // comboBoxGuidMethod
             // 
             this.comboBoxGuidMethod.FormattingEnabled = true;
-            this.comboBoxGuidMethod.Location = new System.Drawing.Point(726, 467);
+            this.comboBoxGuidMethod.Location = new System.Drawing.Point(726, 466);
             this.comboBoxGuidMethod.Name = "comboBoxGuidMethod";
             this.comboBoxGuidMethod.Size = new System.Drawing.Size(121, 21);
             this.comboBoxGuidMethod.TabIndex = 65;
@@ -392,6 +395,35 @@ namespace XAI_BIBLE
             this.checkedListBoxGuidPROG.Size = new System.Drawing.Size(120, 94);
             this.checkedListBoxGuidPROG.TabIndex = 67;
             // 
+            // comboBox5
+            // 
+            this.comboBox5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(230, 358);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(308, 29);
+            this.comboBox5.TabIndex = 68;
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.Location = new System.Drawing.Point(54, 366);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 21);
+            this.label10.TabIndex = 69;
+            this.label10.Text = "Назва видання:";
+            // 
+            // comboBoxGuidNameBook
+            // 
+            this.comboBoxGuidNameBook.FormattingEnabled = true;
+            this.comboBoxGuidNameBook.Location = new System.Drawing.Point(726, 493);
+            this.comboBoxGuidNameBook.Name = "comboBoxGuidNameBook";
+            this.comboBoxGuidNameBook.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGuidNameBook.TabIndex = 70;
+            // 
             // AddPublication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,6 +431,9 @@ namespace XAI_BIBLE
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
             this.ClientSize = new System.Drawing.Size(1174, 550);
+            this.Controls.Add(this.comboBoxGuidNameBook);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboBox5);
             this.Controls.Add(this.checkedListBoxGuidPROG);
             this.Controls.Add(this.checkedListBoxGuidAUTHORS);
             this.Controls.Add(this.comboBoxGuidMethod);
@@ -480,5 +515,8 @@ namespace XAI_BIBLE
         private System.Windows.Forms.ComboBox comboBoxGuidMethod;
         private System.Windows.Forms.CheckedListBox checkedListBoxGuidAUTHORS;
         private System.Windows.Forms.CheckedListBox checkedListBoxGuidPROG;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBoxGuidNameBook;
     }
 }

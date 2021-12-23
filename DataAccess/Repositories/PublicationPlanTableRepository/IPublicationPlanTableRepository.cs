@@ -17,5 +17,7 @@ namespace DataAccess.Repositories.PublicationPlanTableRepository
         PublicationPlanTable Delete(Guid id);
 
         PublicationPlanTable Update(PublicationPlanTable publicationPlanTable);
+
+        Guid GetPlanTableByUserId(Guid id);
     }
 }
