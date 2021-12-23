@@ -43,5 +43,10 @@ namespace Services.Services
         {
             return _iPublicationPlanTableRepository.Delete(id);
         }
+
+        public Guid GetPlanTableByUserId(Guid id)
+        {
+            return _iPublicationPlanTableRepository.GetPlanTableByUserId(id);
+        }
     }
 }

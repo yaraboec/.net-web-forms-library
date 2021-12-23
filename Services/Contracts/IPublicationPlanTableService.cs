@@ -19,5 +19,7 @@ namespace Services.Contracts
         PublicationPlanTable Delete(Guid id);
 
         PublicationPlanTable Update(PublicationPlanTable publicationPlanTable);
+
+        Guid GetPlanTableByUserId(Guid id);
     }
 }

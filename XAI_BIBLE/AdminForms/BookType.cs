@@ -116,7 +116,6 @@ namespace XAI_BIBLE.AdminForms
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            //_parentForm.UpdateDataInGrid(); UPDATE
             _parentForm.Show();
             this.Close();
         }

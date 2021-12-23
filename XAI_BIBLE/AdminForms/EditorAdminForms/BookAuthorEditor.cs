@@ -73,16 +73,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             }
         }
 
-        private void buttonEditBookAuthor_MouseEnter(object sender, EventArgs e)
-        {
-            buttonEditBookAuthor.BackColor = Color.DeepSkyBlue;
-        }
-
-        private void buttonEditBookAuthor_MouseLeave(object sender, EventArgs e)
-        {
-            buttonEditBookAuthor.BackColor = Color.LightSkyBlue;
-        }
-
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             _parentForm.UpdateDataInGrid();

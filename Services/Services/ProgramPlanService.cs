@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Entities;
 using DataAccess.Repositories.ProgramPlanRepository;
+using Services.Contracts;
 
 namespace Services.Services
 {
-    public class ProgramPlanService
+    public class ProgramPlanService : IProgramPlanService
     {
         private readonly IProgramPlanRepository _iProgramPlanRepository;
 

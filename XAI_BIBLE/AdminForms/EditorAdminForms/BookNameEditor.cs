@@ -82,9 +82,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             foreach (var bookType in entities)
             {
                 comboBoxSelectBookType.Items.Add(bookType.Type);
-            }
-            foreach (var bookType in entities)
-            {
                 comboBoxForGuid.Items.Add(bookType.Id);
             }
 
@@ -97,16 +94,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         private void comboBoxSelectBookType_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxForGuid.SelectedIndex = comboBoxSelectBookType.SelectedIndex;
-        }
-
-        private void button1_MouseEnter(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.DeepSkyBlue;
-        }
-
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.LightSkyBlue;
         }
 
         Point lastPoint;

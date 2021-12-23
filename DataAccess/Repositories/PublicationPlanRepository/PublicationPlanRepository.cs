@@ -13,10 +13,17 @@ namespace DataAccess.Repositories.PublicationPlanRepository
     {
         private readonly DbSet<PublicationPlan> _dbSet;
         private readonly XaiBibleContext _context;
+
+        public PublicationPlanRepository(XaiBibleContext context)
+        {
+            _dbSet = context.Set<PublicationPlan>();
+            _context = context;
+        }
+
         public PublicationPlan Create(PublicationPlan publicationPlan)
         {
-            _dbSet.AddAsync(publicationPlan);
-            _context.SaveChangesAsync();
+            _dbSet.Add(publicationPlan);
+            _context.SaveChanges();
 
             return publicationPlan;
         }
@@ -28,7 +35,7 @@ namespace DataAccess.Repositories.PublicationPlanRepository
             if (publicationPlan != null)
             {
                 _dbSet.Remove(publicationPlan);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
 
             return publicationPlan;
@@ -41,7 +48,23 @@ namespace DataAccess.Repositories.PublicationPlanRepository
                 .Include(discipline => discipline.Discipline)
                 .Include(language => language.Language)
                 .Include(methodPublication => methodPublication.MethodPublication)
-                .Include(publicationPlanTable => publicationPlanTable.PublicationPlanTable)
+                .AsNoTracking()
+                .ToList();
+        }
+
+        public IEnumerable<PublicationPlan> GetAllbyPublicationPlanTableId(Guid id)
+        {
+            return _dbSet.Where(x => x.PublicationPlanTableId == id )
+                .Include(authorPlan => authorPlan.AuthorPlans)
+                .ThenInclude(u => u.BookAuthor)
+                .Include(programPlan => programPlan.ProgramPlans)
+                .ThenInclude(u => u.EducationalProgram)
+                .Include(bookName => bookName.BookName)
+                .ThenInclude(type => type.BookType)
+                .Include(speciality => speciality.Speciality)
+                .Include(discipline => discipline.Discipline)
+                .Include(language => language.Language)
+                .Include(methodPublication => methodPublication.MethodPublication)
                 .AsNoTracking()
                 .ToList();
         }
@@ -54,7 +77,6 @@ namespace DataAccess.Repositories.PublicationPlanRepository
                 .Include(discipline => discipline.Discipline)
                 .Include(language => language.Language)
                 .Include(methodPublication => methodPublication.MethodPublication)
-                .Include(publicationPlanTable => publicationPlanTable.PublicationPlanTable)
                 .AsNoTracking()
                 .FirstOrDefault();
         }

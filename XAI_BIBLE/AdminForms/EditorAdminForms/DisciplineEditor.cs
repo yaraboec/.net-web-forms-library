@@ -81,15 +81,11 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             }
         }
 
-        private void button1_MouseEnter(object sender, EventArgs e)
+        private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            button1.BackColor = Color.DeepSkyBlue;
+            _parentForm.UpdateDataInGrid();
+            _parentForm.Show();
+            this.Close();
         }
-
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.LightSkyBlue;
-        }
-
     }
 }

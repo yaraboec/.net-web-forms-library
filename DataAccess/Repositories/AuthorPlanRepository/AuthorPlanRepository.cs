@@ -9,14 +9,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories.AuthorPlanRepository
 {
-    public class AuthorPlanRepository
+    public class AuthorPlanRepository : IAuthorPlanRepository
     {
         private readonly DbSet<AuthorPlan> _dbSet;
         private readonly XaiBibleContext _context;
+
+        public AuthorPlanRepository(XaiBibleContext context)
+        {
+            _dbSet = context.Set<AuthorPlan>();
+            _context = context;
+        }
+
         public AuthorPlan Create(AuthorPlan AuthorPlan)
         {
-            _dbSet.AddAsync(AuthorPlan);
-            _context.SaveChangesAsync();
+            _dbSet.Add(AuthorPlan);
+            _context.SaveChanges();
 
             return AuthorPlan;
         }
@@ -28,7 +35,7 @@ namespace DataAccess.Repositories.AuthorPlanRepository
             if (AuthorPlan != null)
             {
                 _dbSet.Remove(AuthorPlan);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
 
             return AuthorPlan;

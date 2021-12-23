@@ -55,6 +55,15 @@ namespace XAI_BIBLE
             this.background = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.comboBoxGuidDIS = new System.Windows.Forms.ComboBox();
+            this.comboBoxGuidSPEC = new System.Windows.Forms.ComboBox();
+            this.comboBoxGuidLAN = new System.Windows.Forms.ComboBox();
+            this.comboBoxGuidMethod = new System.Windows.Forms.ComboBox();
+            this.checkedListBoxGuidAUTHORS = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxGuidPROG = new System.Windows.Forms.CheckedListBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxGuidNameBook = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -81,8 +90,13 @@ namespace XAI_BIBLE
             this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
             this.numericUpDown1.ForeColor = System.Drawing.Color.Black;
             this.numericUpDown1.Location = new System.Drawing.Point(231, 58);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(148, 29);
+            this.numericUpDown1.Size = new System.Drawing.Size(307, 29);
             this.numericUpDown1.TabIndex = 1;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
@@ -91,7 +105,7 @@ namespace XAI_BIBLE
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(461, 60);
+            this.label2.Location = new System.Drawing.Point(582, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(138, 21);
             this.label2.TabIndex = 2;
@@ -101,9 +115,9 @@ namespace XAI_BIBLE
             // 
             this.checkedListBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(605, 58);
+            this.checkedListBox1.Location = new System.Drawing.Point(726, 56);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(303, 124);
+            this.checkedListBox1.Size = new System.Drawing.Size(389, 148);
             this.checkedListBox1.TabIndex = 3;
             // 
             // label3
@@ -124,7 +138,7 @@ namespace XAI_BIBLE
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(231, 185);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(148, 29);
+            this.comboBox1.Size = new System.Drawing.Size(307, 29);
             this.comboBox1.TabIndex = 5;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -133,7 +147,7 @@ namespace XAI_BIBLE
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label4.Location = new System.Drawing.Point(461, 219);
+            this.label4.Location = new System.Drawing.Point(582, 229);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 21);
             this.label4.TabIndex = 6;
@@ -143,9 +157,9 @@ namespace XAI_BIBLE
             // 
             this.checkedListBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(605, 219);
+            this.checkedListBox2.Location = new System.Drawing.Point(726, 229);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(303, 124);
+            this.checkedListBox2.Size = new System.Drawing.Size(389, 148);
             this.checkedListBox2.TabIndex = 7;
             // 
             // label5
@@ -165,8 +179,9 @@ namespace XAI_BIBLE
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(231, 99);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(148, 29);
+            this.comboBox2.Size = new System.Drawing.Size(307, 29);
             this.comboBox2.TabIndex = 9;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -183,8 +198,13 @@ namespace XAI_BIBLE
             // 
             this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
             this.numericUpDown2.Location = new System.Drawing.Point(231, 143);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(148, 29);
+            this.numericUpDown2.Size = new System.Drawing.Size(307, 29);
             this.numericUpDown2.TabIndex = 11;
             // 
             // label7
@@ -202,8 +222,13 @@ namespace XAI_BIBLE
             // 
             this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
             this.numericUpDown3.Location = new System.Drawing.Point(231, 229);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(148, 29);
+            this.numericUpDown3.Size = new System.Drawing.Size(307, 29);
             this.numericUpDown3.TabIndex = 13;
             // 
             // label8
@@ -223,8 +248,9 @@ namespace XAI_BIBLE
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(230, 271);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(149, 29);
+            this.comboBox3.Size = new System.Drawing.Size(308, 29);
             this.comboBox3.TabIndex = 15;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -243,15 +269,16 @@ namespace XAI_BIBLE
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(230, 314);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(149, 29);
+            this.comboBox4.Size = new System.Drawing.Size(308, 29);
             this.comboBox4.TabIndex = 17;
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
             this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.checkBox1.Location = new System.Drawing.Point(149, 414);
+            this.checkBox1.Location = new System.Drawing.Point(235, 432);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(130, 25);
             this.checkBox1.TabIndex = 19;
@@ -263,12 +290,13 @@ namespace XAI_BIBLE
             this.button1.BackColor = System.Drawing.Color.ForestGreen;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(129, 453);
+            this.button1.Location = new System.Drawing.Point(211, 463);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(175, 41);
             this.button1.TabIndex = 48;
             this.button1.Text = "Створити";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStrip1
             // 
@@ -278,9 +306,11 @@ namespace XAI_BIBLE
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(966, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1174, 25);
             this.toolStrip1.TabIndex = 58;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
+            this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
             // 
             // toolStripButton3
             // 
@@ -290,33 +320,111 @@ namespace XAI_BIBLE
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(60, 22);
             this.toolStripButton3.Text = "Вийти";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // background
             // 
             this.background.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.background.Location = new System.Drawing.Point(34, 42);
             this.background.Name = "background";
-            this.background.Size = new System.Drawing.Size(371, 349);
+            this.background.Size = new System.Drawing.Size(522, 376);
             this.background.TabIndex = 59;
             this.background.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.pictureBox1.Location = new System.Drawing.Point(455, 42);
+            this.pictureBox1.Location = new System.Drawing.Point(562, 42);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(476, 472);
+            this.pictureBox1.Size = new System.Drawing.Size(589, 472);
             this.pictureBox1.TabIndex = 60;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.pictureBox2.Location = new System.Drawing.Point(34, 397);
+            this.pictureBox2.Location = new System.Drawing.Point(34, 424);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(371, 117);
+            this.pictureBox2.Size = new System.Drawing.Size(522, 90);
             this.pictureBox2.TabIndex = 61;
             this.pictureBox2.TabStop = false;
+            // 
+            // comboBoxGuidDIS
+            // 
+            this.comboBoxGuidDIS.FormattingEnabled = true;
+            this.comboBoxGuidDIS.Location = new System.Drawing.Point(726, 383);
+            this.comboBoxGuidDIS.Name = "comboBoxGuidDIS";
+            this.comboBoxGuidDIS.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGuidDIS.TabIndex = 62;
+            // 
+            // comboBoxGuidSPEC
+            // 
+            this.comboBoxGuidSPEC.FormattingEnabled = true;
+            this.comboBoxGuidSPEC.Location = new System.Drawing.Point(726, 411);
+            this.comboBoxGuidSPEC.Name = "comboBoxGuidSPEC";
+            this.comboBoxGuidSPEC.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGuidSPEC.TabIndex = 63;
+            // 
+            // comboBoxGuidLAN
+            // 
+            this.comboBoxGuidLAN.FormattingEnabled = true;
+            this.comboBoxGuidLAN.Location = new System.Drawing.Point(726, 439);
+            this.comboBoxGuidLAN.Name = "comboBoxGuidLAN";
+            this.comboBoxGuidLAN.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGuidLAN.TabIndex = 64;
+            // 
+            // comboBoxGuidMethod
+            // 
+            this.comboBoxGuidMethod.FormattingEnabled = true;
+            this.comboBoxGuidMethod.Location = new System.Drawing.Point(726, 466);
+            this.comboBoxGuidMethod.Name = "comboBoxGuidMethod";
+            this.comboBoxGuidMethod.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGuidMethod.TabIndex = 65;
+            // 
+            // checkedListBoxGuidAUTHORS
+            // 
+            this.checkedListBoxGuidAUTHORS.FormattingEnabled = true;
+            this.checkedListBoxGuidAUTHORS.Location = new System.Drawing.Point(864, 383);
+            this.checkedListBoxGuidAUTHORS.Name = "checkedListBoxGuidAUTHORS";
+            this.checkedListBoxGuidAUTHORS.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBoxGuidAUTHORS.TabIndex = 66;
+            // 
+            // checkedListBoxGuidPROG
+            // 
+            this.checkedListBoxGuidPROG.FormattingEnabled = true;
+            this.checkedListBoxGuidPROG.Location = new System.Drawing.Point(995, 383);
+            this.checkedListBoxGuidPROG.Name = "checkedListBoxGuidPROG";
+            this.checkedListBoxGuidPROG.Size = new System.Drawing.Size(120, 94);
+            this.checkedListBoxGuidPROG.TabIndex = 67;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(230, 358);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(308, 29);
+            this.comboBox5.TabIndex = 68;
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label10.Location = new System.Drawing.Point(54, 366);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 21);
+            this.label10.TabIndex = 69;
+            this.label10.Text = "Назва видання:";
+            // 
+            // comboBoxGuidNameBook
+            // 
+            this.comboBoxGuidNameBook.FormattingEnabled = true;
+            this.comboBoxGuidNameBook.Location = new System.Drawing.Point(726, 493);
+            this.comboBoxGuidNameBook.Name = "comboBoxGuidNameBook";
+            this.comboBoxGuidNameBook.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxGuidNameBook.TabIndex = 70;
             // 
             // AddPublication
             // 
@@ -324,7 +432,16 @@ namespace XAI_BIBLE
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::XAI_BIBLE.Properties.Resources.Screenshot_12;
-            this.ClientSize = new System.Drawing.Size(966, 550);
+            this.ClientSize = new System.Drawing.Size(1174, 550);
+            this.Controls.Add(this.comboBoxGuidNameBook);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.checkedListBoxGuidPROG);
+            this.Controls.Add(this.checkedListBoxGuidAUTHORS);
+            this.Controls.Add(this.comboBoxGuidMethod);
+            this.Controls.Add(this.comboBoxGuidLAN);
+            this.Controls.Add(this.comboBoxGuidSPEC);
+            this.Controls.Add(this.comboBoxGuidDIS);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBox1);
@@ -354,6 +471,8 @@ namespace XAI_BIBLE
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddPublication";
             this.Load += new System.EventHandler(this.AddPublication_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
@@ -394,5 +513,14 @@ namespace XAI_BIBLE
         private System.Windows.Forms.PictureBox background;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ComboBox comboBoxGuidDIS;
+        private System.Windows.Forms.ComboBox comboBoxGuidSPEC;
+        private System.Windows.Forms.ComboBox comboBoxGuidLAN;
+        private System.Windows.Forms.ComboBox comboBoxGuidMethod;
+        private System.Windows.Forms.CheckedListBox checkedListBoxGuidAUTHORS;
+        private System.Windows.Forms.CheckedListBox checkedListBoxGuidPROG;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBoxGuidNameBook;
     }
 }

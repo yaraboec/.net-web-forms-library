@@ -12,6 +12,8 @@ namespace DataAccess.Repositories.PublicationPlanRepository
 
         IEnumerable<PublicationPlan> GetAll();
 
+        IEnumerable<PublicationPlan> GetAllbyPublicationPlanTableId(Guid id);
+
         PublicationPlan Create(PublicationPlan publicationPlan);
 
         PublicationPlan Delete(Guid id);

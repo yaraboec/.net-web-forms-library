@@ -33,11 +33,11 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.registerlabel = new System.Windows.Forms.Label();
-            this.background = new System.Windows.Forms.PictureBox();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registerlabel = new System.Windows.Forms.Label();
+            this.background = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
@@ -53,6 +53,8 @@
             this.toolStrip1.Size = new System.Drawing.Size(737, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Speciality_MouseDown);
+            this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Speciality_MouseMove);
             // 
             // toolStripButton1
             // 
@@ -95,6 +97,23 @@
             this.dataGridView1.TabIndex = 48;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Код";
+            this.Column2.Name = "Column2";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Назва спеціальності";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 110;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "id";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            // 
             // registerlabel
             // 
             this.registerlabel.AutoSize = true;
@@ -115,23 +134,6 @@
             this.background.Size = new System.Drawing.Size(676, 298);
             this.background.TabIndex = 52;
             this.background.TabStop = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Код";
-            this.Column2.Name = "Column2";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Назва спеціальності";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 110;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "id";
-            this.Column3.Name = "Column3";
-            this.Column3.Visible = false;
             // 
             // Speciality
             // 
