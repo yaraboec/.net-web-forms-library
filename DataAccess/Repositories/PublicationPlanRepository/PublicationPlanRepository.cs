@@ -65,10 +65,10 @@ namespace DataAccess.Repositories.PublicationPlanRepository
 
             if (_publicationPlan != null)
             {
-                _dbSet.Update(_publicationPlan);
-                _context.SaveChangesAsync();
+                _dbSet.Update(publicationPlan);
+                _context.SaveChanges();
 
-                return _publicationPlan;
+                return publicationPlan;
             }
 
             return null;

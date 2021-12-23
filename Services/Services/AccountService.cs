@@ -1,4 +1,5 @@
-﻿using BC = BCrypt.Net.BCrypt;
+﻿using System;
+using BC = BCrypt.Net.BCrypt;
 using DataAccess.Context;
 using DataAccess.Entities;
 using DataAccess.Repositories.UserRepository;
@@ -31,6 +32,13 @@ namespace Services.Services
             var account = _service.GetByUsername(model.Username);
 
             return account != null && BC.Verify(model.Password, account.Password);
+        }
+
+        public string GetGuidByUsername(string username)
+        {
+            var account = _service.GetByUsername(username);
+
+            return account != null ? account.Id.ToString() : null;
         }
     }
 }

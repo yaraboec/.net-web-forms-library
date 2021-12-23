@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System;
 using System.Windows.Forms;
 using DataAccess.Context;
 using DataAccess.Repositories;
@@ -92,6 +89,13 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             button1.BackColor = Color.LightSkyBlue;
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            _parentForm.UpdateDataInGrid();
+            _parentForm.Show();
+            this.Close();
         }
     }
 }

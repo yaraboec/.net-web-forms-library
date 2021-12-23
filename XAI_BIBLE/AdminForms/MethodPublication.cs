@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,25 +10,40 @@ using XAI_BIBLE.AdminForms.EditorAdminForms;
 
 namespace XAI_BIBLE.AdminForms
 {
-    public partial class BookType : Form
+    public partial class MethodPublication : Form
     {
         XaiBibleContext _context;
-        ISqlRepository<DataAccess.Entities.BookType> _repository;
-        IBookTypeService _service;
+        ISqlRepository<DataAccess.Entities.MethodPublication> _repository;
+        IMethodPublicationService _service;
         private Dataview _parentForm;
 
-        public BookType()
+        public MethodPublication()
         {
             InitializeComponent();
             _context = new XaiBibleContext();
-            _repository = new SqlRepository<DataAccess.Entities.BookType>(_context);
-            _service = new BookTypeService(_repository);
+            _repository = new SqlRepository<DataAccess.Entities.MethodPublication>(_context);
+            _service = new MethodPublicationService(_repository);
         }
 
-        private void BookTyper_Load(object sender, EventArgs e)
+        Point lastPoint;
+
+        private void MethodPublication_MouseDown(object sender, MouseEventArgs e)
         {
-            List<DataAccess.Entities.BookType> bookTypes = new List<DataAccess.Entities.BookType>();
-            bookTypes = _service.GetAll().ToList();
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void MethodPublication_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void MethodPublication_Load(object sender, EventArgs e)
+        {
+            var methodPublications = _service.GetAll().ToList();
 
             DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
             btnUpdate.Name = "col3";
@@ -49,17 +63,42 @@ namespace XAI_BIBLE.AdminForms
             dataGridView1.Columns.Add(btnDelete);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            foreach (var type in bookTypes)
+            foreach (var method in methodPublications)
             {
-                dataGridView1.Rows.Add(type.Type, type.Id);
+                dataGridView1.Rows.Add(method.Name, method.Id);
             }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            //_parentForm.UpdateDataInGrid(); UPDATE
+            _parentForm.Show();
+            this.Close();
+        }
+
+        public void startFormByDataview(Dataview parentForm)
+        {
+            _parentForm = parentForm;
+            parentForm.Hide();
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            BookTypeEditor bookTypeEditor = new BookTypeEditor();
-            bookTypeEditor.startEditorForAdd(this);
-            bookTypeEditor.Show();
+            MethodPublicationEditor methodPublicationEditor = new MethodPublicationEditor();
+            methodPublicationEditor.startEditorForAdd(this);
+            methodPublicationEditor.Show();
+        }
+
+        public void UpdateDataInGrid()
+        {
+            var methodPublications = _service.GetAll().ToList();
+
+            dataGridView1.Rows.Clear();
+
+            foreach (var method in methodPublications)
+            {
+                dataGridView1.Rows.Add(method.Name, method.Id);
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -72,11 +111,11 @@ namespace XAI_BIBLE.AdminForms
 
                     if (entityId != "")
                     {
-                        BookTypeEditor bookTypeEditor = new BookTypeEditor();
+                        MethodPublicationEditor methodPublicationEditor = new MethodPublicationEditor();
 
-                        bookTypeEditor.getGuidForUpdate(new Guid(entityId), this);
+                        methodPublicationEditor.getGuidForUpdate(new Guid(entityId), this);
 
-                        bookTypeEditor.Show();
+                        methodPublicationEditor.Show();
                     }
                 }
             }
@@ -95,47 +134,5 @@ namespace XAI_BIBLE.AdminForms
                 }
             }
         }
-
-        public void UpdateDataInGrid()
-        {
-            List<DataAccess.Entities.BookType> bookTypes = new List<DataAccess.Entities.BookType>();
-            bookTypes = _service.GetAll().ToList();
-
-            dataGridView1.Rows.Clear();
-
-            foreach (var type in bookTypes)
-            {
-                dataGridView1.Rows.Add(type.Type, type.Id);
-            }
-        }
-        public void startFormByDataview(Dataview parentForm)
-        {
-            _parentForm = parentForm;
-            parentForm.Hide();
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            //_parentForm.UpdateDataInGrid(); UPDATE
-            _parentForm.Show();
-            this.Close();
-        }
-
-        Point lastPoint;
-
-        private void BookType_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
-        }
-
-        private void BookType_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
-            }
-        }
-
     }
 }

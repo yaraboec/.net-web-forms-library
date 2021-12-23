@@ -2,46 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using DataAccess.Entities;
-using DataAccess.Repositories;
+using DataAccess.Repositories.ProgramPlanRepository;
 using Moq;
 using NUnit.Framework;
 using Services.Services;
 
 namespace UnitTests
 {
-    public class BookTypeServices
+    class ProgramPlanTests
     {
         private static Guid ExistingId = Guid.NewGuid();
         private static Guid NonExistingId = Guid.NewGuid();
 
-        private readonly BookType _entity = new BookType()
+        private readonly ProgramPlan _entity = new ProgramPlan()
         {
             Id = ExistingId
         };
 
-        private readonly BookType _nonExistingEntity = new BookType()
+        private readonly ProgramPlan _nonExistingEntity = new ProgramPlan()
         {
             Id = NonExistingId
         };
 
-        private readonly IEnumerable<BookType> _entities = new List<BookType>()
+        private readonly IEnumerable<ProgramPlan> _entities = new List<ProgramPlan>()
         {
-            new BookType()
+            new ProgramPlan()
             {
                 Id = ExistingId
             }
         };
 
-        private Mock<ISqlRepository<BookType>> _iSqlRepository;
+        private Mock<IProgramPlanRepository> _iSqlRepository;
 
-        private BookTypeService _service;
+        private ProgramPlanService _service;
 
         [SetUp]
         public void Setup()
         {
-            _iSqlRepository = new Mock<ISqlRepository<BookType>>();
+            _iSqlRepository = new Mock<IProgramPlanRepository>();
 
-            _service = new BookTypeService(_iSqlRepository.Object);
+            _service = new ProgramPlanService(_iSqlRepository.Object);
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace UnitTests
         public void GetById_NonExistingId_ReturnsNull()
         {
             _iSqlRepository.Setup(x => x.GetById(ExistingId))
-                .Returns((BookType)null);
+                .Returns((ProgramPlan)null);
 
             var entity = _service.GetById(NonExistingId);
 
@@ -102,7 +102,7 @@ namespace UnitTests
         public void Update_NonExistingEntity_ReturnsNull()
         {
             _iSqlRepository.Setup(x => x.Update(_nonExistingEntity))
-                .Returns((BookType)null);
+                .Returns((ProgramPlan)null);
 
             var entity = _service.Update(_nonExistingEntity);
 
@@ -124,7 +124,7 @@ namespace UnitTests
         public void Delete_NonExistingId_ReturnsNull()
         {
             _iSqlRepository.Setup(x => x.Delete(NonExistingId))
-                .Returns((BookType)null);
+                .Returns((ProgramPlan)null);
 
             var entity = _service.Delete(NonExistingId);
 

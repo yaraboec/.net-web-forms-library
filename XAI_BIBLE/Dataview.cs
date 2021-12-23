@@ -12,6 +12,7 @@ namespace XAI_BIBLE
     {
         private string _username;
         private Login _parentForm;
+        private Guid _userId;
 
         public Dataview()
         {
@@ -39,6 +40,9 @@ namespace XAI_BIBLE
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
+            AddPublication addPublication = new AddPublication();
+            addPublication.startFormByDataview(_userId, this);
+            addPublication.Show();
         }
 
         private void Dataview_Load(object sender, EventArgs e)
@@ -46,9 +50,10 @@ namespace XAI_BIBLE
             toolStripButtonAdmin.Visible = _username == "admin";
         }
 
-        public void getUsernameByLogin(string username, Login parentForm)
+        public void getUsernameByLogin(string username, Guid userId, Login parentForm)
         {
             _username = username;
+            _userId = userId;
             _parentForm = parentForm;
             parentForm.Hide();
         }
@@ -303,6 +308,20 @@ namespace XAI_BIBLE
 
                 oDoc.SaveAs2(filename);
             }
+        }
+
+        private void методиПублікаційToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MethodPublication methodPublication = new MethodPublication();
+            methodPublication.startFormByDataview(this);
+            methodPublication.Show();
+        }
+
+        private void спеціальностіToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Speciality speciality = new Speciality();
+            speciality.startFormByDataview(this);
+            speciality.Show();
         }
     }
 }

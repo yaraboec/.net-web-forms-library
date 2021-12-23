@@ -44,15 +44,15 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(36, 41);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 21);
+            this.label1.Size = new System.Drawing.Size(56, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Додати мову:";
+            this.label1.Text = "Мова:";
             // 
             // textBoxInputLanguage
             // 
             this.textBoxInputLanguage.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
             this.textBoxInputLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxInputLanguage.Location = new System.Drawing.Point(40, 66);
+            this.textBoxInputLanguage.Location = new System.Drawing.Point(40, 65);
             this.textBoxInputLanguage.Name = "textBoxInputLanguage";
             this.textBoxInputLanguage.Size = new System.Drawing.Size(258, 29);
             this.textBoxInputLanguage.TabIndex = 1;
@@ -62,9 +62,9 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(40, 116);
+            this.button1.Location = new System.Drawing.Point(40, 117);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(256, 41);
+            this.button1.Size = new System.Drawing.Size(258, 41);
             this.button1.TabIndex = 59;
             this.button1.Text = "Підтвердити";
             this.button1.UseVisualStyleBackColor = false;
@@ -90,6 +90,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(83, 22);
             this.toolStripButton3.Text = "Скасувати";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // LanguageEditor
             // 

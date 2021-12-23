@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,25 +10,40 @@ using XAI_BIBLE.AdminForms.EditorAdminForms;
 
 namespace XAI_BIBLE.AdminForms
 {
-    public partial class BookType : Form
+    public partial class Speciality : Form
     {
         XaiBibleContext _context;
-        ISqlRepository<DataAccess.Entities.BookType> _repository;
-        IBookTypeService _service;
+        ISqlRepository<DataAccess.Entities.Speciality> _repository;
+        ISpecialityService _service;
         private Dataview _parentForm;
 
-        public BookType()
+        public Speciality()
         {
             InitializeComponent();
             _context = new XaiBibleContext();
-            _repository = new SqlRepository<DataAccess.Entities.BookType>(_context);
-            _service = new BookTypeService(_repository);
+            _repository = new SqlRepository<DataAccess.Entities.Speciality>(_context);
+            _service = new SpecialityService(_repository);
         }
 
-        private void BookTyper_Load(object sender, EventArgs e)
+        Point lastPoint;
+
+        private void Speciality_MouseDown(object sender, MouseEventArgs e)
         {
-            List<DataAccess.Entities.BookType> bookTypes = new List<DataAccess.Entities.BookType>();
-            bookTypes = _service.GetAll().ToList();
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void Speciality_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void Speciality_Load(object sender, EventArgs e)
+        {
+            var specialities = _service.GetAll().ToList();
 
             DataGridViewButtonColumn btnUpdate = new DataGridViewButtonColumn();
             btnUpdate.Name = "col3";
@@ -49,65 +63,12 @@ namespace XAI_BIBLE.AdminForms
             dataGridView1.Columns.Add(btnDelete);
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            foreach (var type in bookTypes)
+            foreach (var speciality in specialities)
             {
-                dataGridView1.Rows.Add(type.Type, type.Id);
+                dataGridView1.Rows.Add(speciality.Code, speciality.Name, speciality.Id);
             }
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            BookTypeEditor bookTypeEditor = new BookTypeEditor();
-            bookTypeEditor.startEditorForAdd(this);
-            bookTypeEditor.Show();
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataGridView1.Columns["col3"].Index)
-            {
-                if (DialogResult.Yes == MessageBox.Show("Ви бажаєте оновити це поле?", "", MessageBoxButtons.YesNo))
-                {
-                    var entityId = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-
-                    if (entityId != "")
-                    {
-                        BookTypeEditor bookTypeEditor = new BookTypeEditor();
-
-                        bookTypeEditor.getGuidForUpdate(new Guid(entityId), this);
-
-                        bookTypeEditor.Show();
-                    }
-                }
-            }
-            else if (e.ColumnIndex == dataGridView1.Columns["col4"].Index)
-            {
-                if (DialogResult.Yes == MessageBox.Show("Ви бажаєте видалити це поле?", "", MessageBoxButtons.YesNo))
-                {
-                    var entityId = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-
-                    if (entityId != "")
-                    {
-                        _service.Delete(new Guid(entityId));
-                    }
-
-                    this.UpdateDataInGrid();
-                }
-            }
-        }
-
-        public void UpdateDataInGrid()
-        {
-            List<DataAccess.Entities.BookType> bookTypes = new List<DataAccess.Entities.BookType>();
-            bookTypes = _service.GetAll().ToList();
-
-            dataGridView1.Rows.Clear();
-
-            foreach (var type in bookTypes)
-            {
-                dataGridView1.Rows.Add(type.Type, type.Id);
-            }
-        }
         public void startFormByDataview(Dataview parentForm)
         {
             _parentForm = parentForm;
@@ -121,21 +82,57 @@ namespace XAI_BIBLE.AdminForms
             this.Close();
         }
 
-        Point lastPoint;
-
-        private void BookType_MouseDown(object sender, MouseEventArgs e)
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            lastPoint = new Point(e.X, e.Y);
+            SpecialityEditor specialityEditor = new SpecialityEditor();
+            specialityEditor.startEditorForAdd(this);
+            specialityEditor.Show();
         }
 
-        private void BookType_MouseMove(object sender, MouseEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.ColumnIndex == dataGridView1.Columns["col3"].Index)
             {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
+                if (DialogResult.Yes == MessageBox.Show("Ви бажаєте оновити це поле?", "", MessageBoxButtons.YesNo))
+                {
+                    var entityId = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
+
+                    if (entityId != "")
+                    {
+                        SpecialityEditor specialityEditor = new SpecialityEditor();
+
+                        specialityEditor.getGuidForUpdate(new Guid(entityId), this);
+
+                        specialityEditor.Show();
+                    }
+                }
+            }
+            else if (e.ColumnIndex == dataGridView1.Columns["col4"].Index)
+            {
+                if (DialogResult.Yes == MessageBox.Show("Ви бажаєте видалити це поле?", "", MessageBoxButtons.YesNo))
+                {
+                    var entityId = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
+
+                    if (entityId != "")
+                    {
+                        _service.Delete(new Guid(entityId));
+                    }
+
+                    this.UpdateDataInGrid();
+                }
             }
         }
 
+        public void UpdateDataInGrid()
+        {
+            var specialities = _service.GetAll().ToList();
+
+            dataGridView1.Rows.Clear();
+
+            foreach (var speciality in specialities)
+            {
+                dataGridView1.Rows.Add(speciality.Code, speciality.Name, speciality.Id);
+            }
+        }
     }
 }

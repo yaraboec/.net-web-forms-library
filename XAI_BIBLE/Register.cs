@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 using DataAccess.Context;
 using DataAccess.Entities;
-using DataAccess.Repositories.UserRepository;
+using DataAccess.Repositories;
+using DataAccess.Repositories.PublicationPlanTableRepository;
 using Services.Contracts;
 using Services.Services;
 
@@ -17,8 +12,12 @@ namespace XAI_BIBLE
 {
     public partial class Register : Form
     {
+        XaiBibleContext _context;
+        IPublicationPlanTableRepository _repository;
+        IPublicationPlanTableService _serviceTable;
         private IAccountService _service;
         private Login _loginForm;
+
         public Register()
         {
             InitializeComponent();
@@ -27,6 +26,9 @@ namespace XAI_BIBLE
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             UpdateStyles();
             _service = new AccountService();
+            _context = new XaiBibleContext();
+            _repository = new PublicationPlanTableRepository(_context);
+            _serviceTable = new PublicationPlanTableService(_repository);
         }
 
         private void txtBox_RegisterLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -41,7 +43,7 @@ namespace XAI_BIBLE
             txtBox_RegisterLogin.ForeColor = Color.Gray;
             txtBox_RegisterPassword.Text = "Пароль";
             txtBox_RegisterPassword.ForeColor = Color.Gray;
-            txtBox_RegisterConfirmPassword.Text = "Підтвердіть Пароль";
+            txtBox_RegisterConfirmPassword.Text = "Підтвердіть пароль";
             txtBox_RegisterConfirmPassword.ForeColor = Color.Gray;
         }
 
@@ -102,6 +104,7 @@ namespace XAI_BIBLE
             if (txtBox_RegisterPassword.Text == "Пароль")
             {
                 txtBox_RegisterPassword.Clear();
+                txtBox_RegisterPassword.UseSystemPasswordChar = true;
             }
         }
 
@@ -111,6 +114,7 @@ namespace XAI_BIBLE
             {
                 txtBox_RegisterPassword.Text = "Пароль";
                 txtBox_RegisterPassword.ForeColor = Color.Gray;
+                txtBox_RegisterPassword.UseSystemPasswordChar = false;
             }
         }
 
@@ -121,9 +125,10 @@ namespace XAI_BIBLE
 
         private void txtBox_RegisterConfirmPassword_MouseDown(object sender, MouseEventArgs e)
         {
-            if (txtBox_RegisterConfirmPassword.Text == "Підтвердіть Пароль")
+            if (txtBox_RegisterConfirmPassword.Text == "Підтвердіть пароль")
             {
                 txtBox_RegisterConfirmPassword.Clear();
+                txtBox_RegisterConfirmPassword.UseSystemPasswordChar = true;
             }
         }
 
@@ -131,19 +136,21 @@ namespace XAI_BIBLE
         {
             if (txtBox_RegisterConfirmPassword.Text == "")
             {
-                txtBox_RegisterConfirmPassword.Text = "Підтвердіть Пароль";
+                txtBox_RegisterConfirmPassword.Text = "Підтвердіть пароль";
                 txtBox_RegisterConfirmPassword.ForeColor = Color.Gray;
+                txtBox_RegisterConfirmPassword.UseSystemPasswordChar = false;
             }
         }
 
         private void txtBox_RegisterConfirmPassword_Enter(object sender, EventArgs e)
         {
             txtBox_RegisterConfirmPassword.ForeColor = Color.Black;
+            txtBox_RegisterConfirmPassword.UseSystemPasswordChar = true;
         }
 
         private void Register_Shown(object sender, EventArgs e)
         {
-            bttn_RegisterButton.Focus();
+            bttn_RegisterLinkLabel.Focus();
             txtBox_RegisterPassword.ForeColor = Color.Gray;
         }
 
@@ -160,6 +167,15 @@ namespace XAI_BIBLE
 
             if (password == confirmPassword && login != "")
             {
+                var userExists = _service.GetGuidByUsername(login);
+
+                if (userExists != null)
+                {
+                    MessageBox.Show("Користувач із таким ім'ям вже існує", "", MessageBoxButtons.OK);
+
+                    return;
+                }
+
                 User user = new User
                 {
                     Username = login,
@@ -169,6 +185,11 @@ namespace XAI_BIBLE
                 _service.Register(user);
                 _loginForm.Show();
                 this.Hide();
+                var planTable = new PublicationPlanTable()
+                {
+                    UserId = new Guid(_service.GetGuidByUsername(login))
+                };
+                _serviceTable.Create(planTable);
             }
             else
             {
@@ -206,6 +227,29 @@ namespace XAI_BIBLE
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
             }
+        }
+
+        private void txtBox_RegisterPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBox_RegisterPassword.Text == "")
+            {
+                txtBox_RegisterPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void txtBox_RegisterConfirmPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBox_RegisterPassword.Text == "")
+            {
+                txtBox_RegisterPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Програмне забезпечення призначене для використання викладацьким складом кафедри 603 НАУ „ХАІ”. " +
+                            "ПЗ поширюється у відкритому вигляді на сумлінній угоді. " +
+                            "Приємного користування.", "", MessageBoxButtons.OK);
         }
     }
 }
