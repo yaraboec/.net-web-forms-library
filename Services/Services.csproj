@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IAuthorPlanService.cs" />
     <Compile Include="Contracts\IBookAuthorService.cs" />
     <Compile Include="Contracts\IBookNameService.cs" />
     <Compile Include="Contracts\IBookTypeService.cs" />
@@ -66,11 +67,13 @@
     <Compile Include="Contracts\ILanguageService.cs" />
     <Compile Include="Contracts\IMethodPublicationService.cs" />
     <Compile Include="Contracts\IAccountService.cs" />
+    <Compile Include="Contracts\IProgramPlanService.cs" />
     <Compile Include="Contracts\IPublicationPlanService.cs" />
     <Compile Include="Contracts\IPublicationPlanTableService.cs" />
     <Compile Include="Contracts\ISpecialityService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\AuthorPlanService.cs" />
     <Compile Include="Services\BookAuthorService.cs" />
     <Compile Include="Services\BookNameService.cs" />
     <Compile Include="Services\BookTypeService.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Services\EducationalProgramService.cs" />
     <Compile Include="Services\LanguageService.cs" />
     <Compile Include="Services\MethodPublicationService.cs" />
+    <Compile Include="Services\ProgramPlanService.cs" />
     <Compile Include="Services\PublicationPlanService.cs" />
     <Compile Include="Services\PublicationPlanTableService.cs" />
     <Compile Include="Services\SpecialityService.cs" />
