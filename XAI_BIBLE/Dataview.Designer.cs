@@ -65,6 +65,7 @@
             this.дисципліниToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.навчальніПрограмиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.мовиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.методиПублікаційToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -284,7 +285,8 @@
             this.типиКнигToolStripMenuItem,
             this.дисципліниToolStripMenuItem,
             this.навчальніПрограмиToolStripMenuItem,
-            this.мовиToolStripMenuItem});
+            this.мовиToolStripMenuItem,
+            this.методиПублікаційToolStripMenuItem});
             this.toolStripButtonAdmin.Image = global::XAI_BIBLE.Properties.Resources.unnamed;
             this.toolStripButtonAdmin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdmin.Name = "toolStripButtonAdmin";
@@ -332,6 +334,13 @@
             this.мовиToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.мовиToolStripMenuItem.Text = "Мови";
             this.мовиToolStripMenuItem.Click += new System.EventHandler(this.мовиToolStripMenuItem_Click);
+            // 
+            // методиПублікаційToolStripMenuItem
+            // 
+            this.методиПублікаційToolStripMenuItem.Name = "методиПублікаційToolStripMenuItem";
+            this.методиПублікаційToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.методиПублікаційToolStripMenuItem.Text = "Методи публікації";
+            this.методиПублікаційToolStripMenuItem.Click += new System.EventHandler(this.методиПублікаційToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -401,5 +410,6 @@
         private System.Windows.Forms.ToolStripMenuItem навчальніПрограмиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem мовиToolStripMenuItem;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.ToolStripMenuItem методиПублікаційToolStripMenuItem;
     }
 }

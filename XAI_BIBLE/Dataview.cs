@@ -309,5 +309,12 @@ namespace XAI_BIBLE
                 oDoc.SaveAs2(filename);
             }
         }
+
+        private void методиПублікаційToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MethodPublication methodPublication = new MethodPublication();
+            methodPublication.startFormByDataview(this);
+            methodPublication.Show();
+        }
     }
 }
