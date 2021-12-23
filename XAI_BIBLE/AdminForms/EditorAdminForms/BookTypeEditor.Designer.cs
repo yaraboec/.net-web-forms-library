@@ -48,7 +48,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             // 
             // buttonEditBookType
             // 
-            this.buttonEditBookType.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.buttonEditBookType.BackColor = System.Drawing.Color.ForestGreen;
             this.buttonEditBookType.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonEditBookType.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonEditBookType.Location = new System.Drawing.Point(40, 116);
@@ -58,8 +58,6 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.buttonEditBookType.Text = "Підтвердити";
             this.buttonEditBookType.UseVisualStyleBackColor = false;
             this.buttonEditBookType.Click += new System.EventHandler(this.buttonEditBookType_Click);
-            this.buttonEditBookType.MouseEnter += new System.EventHandler(this.buttonEditBookType_MouseEnter);
-            this.buttonEditBookType.MouseLeave += new System.EventHandler(this.buttonEditBookType_MouseLeave);
             // 
             // label1
             // 

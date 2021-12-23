@@ -80,16 +80,5 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
                 this.Top += e.Y - lastPoint.Y;
             }
         }
-
-        private void button1_MouseEnter(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.DeepSkyBlue;
-        }
-
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.LightSkyBlue;
-        }
-
     }
 }
