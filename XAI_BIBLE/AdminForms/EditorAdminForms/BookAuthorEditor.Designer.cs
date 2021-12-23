@@ -50,6 +50,8 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.toolStrip1.Size = new System.Drawing.Size(330, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookAuthorEditor_MouseDown);
+            this.toolStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BookAuthorEditor_MouseMove);
             // 
             // toolStripButton3
             // 
@@ -152,6 +154,7 @@ namespace XAI_BIBLE.AdminForms.EditorAdminForms
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "BookAuthorEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookAuthorEditor";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BookAuthorEditor_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BookAuthorEditor_MouseMove);
