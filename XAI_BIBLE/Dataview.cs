@@ -12,6 +12,7 @@ namespace XAI_BIBLE
     {
         private string _username;
         private Login _parentForm;
+        private Guid _userId;
 
         public Dataview()
         {
@@ -47,9 +48,10 @@ namespace XAI_BIBLE
             toolStripButtonAdmin.Visible = _username == "admin";
         }
 
-        public void getUsernameByLogin(string username, Login parentForm)
+        public void getUsernameByLogin(string username, Guid userId, Login parentForm)
         {
             _username = username;
+            _userId = userId;
             _parentForm = parentForm;
             parentForm.Hide();
         }

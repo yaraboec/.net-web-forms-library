@@ -186,7 +186,7 @@ namespace XAI_BIBLE
                     txtBox_Password.Text = "";
                 }
                 Dataview dataView = new Dataview();
-                dataView.getUsernameByLogin(login, this);
+                dataView.getUsernameByLogin(login, _service.GetGuidByUsername(login), this);
                 dataView.Show();
             }
             else
