@@ -207,26 +207,19 @@ namespace XAI_BIBLE
             language.Show();
         }
 
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            Bitmap printDataGridView = new Bitmap(this.dataGrid.Width, this.dataGrid.Height);
-            dataGrid.DrawToBitmap(printDataGridView, new Rectangle(0, 0, this.dataGrid.Width, this.dataGrid.Height));
-            e.Graphics.DrawImage(printDataGridView, 0, 0);
-        }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            PrintDialog printDataGridViewDialog = new PrintDialog();
-            printDataGridViewDialog.Document = printDocument1;
-            printDataGridViewDialog.UseEXDialog = true;
-
-            DialogResult printDataGridViewDialogResult = printDataGridViewDialog.ShowDialog();
-
-            if (printDataGridViewDialogResult == DialogResult.OK)
-            {
-                printDocument1.DocumentName = "Друкування";
-                printDocument1.Print();
-            }
+            DGVPrinter printer = new DGVPrinter();
+            printer.Title = "Звіти";
+            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.Date);
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = "KHAI_BIBLE";
+            printer.FooterSpacing = 15;
+            printer.PrintDataGridView(dataGrid);
         }
 
         public void UpdateDataInGrid()

@@ -67,7 +67,6 @@
             this.методиПублікаційToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.спеціальностіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -348,10 +347,6 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
             // Dataview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,7 +389,6 @@
         private System.Windows.Forms.ToolStripMenuItem дисципліниToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem навчальніПрограмиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem мовиToolStripMenuItem;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.ToolStripMenuItem методиПублікаційToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem спеціальностіToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

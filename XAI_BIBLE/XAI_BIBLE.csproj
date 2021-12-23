@@ -278,6 +278,7 @@
     <Compile Include="Dataview.Designer.cs">
       <DependentUpon>Dataview.cs</DependentUpon>
     </Compile>
+    <Compile Include="DVGPrinter.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
