@@ -68,6 +68,7 @@
             this.методиПублікаційToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.спеціальностіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.toolStrip.SuspendLayout();
@@ -286,7 +287,8 @@
             this.дисципліниToolStripMenuItem,
             this.навчальніПрограмиToolStripMenuItem,
             this.мовиToolStripMenuItem,
-            this.методиПублікаційToolStripMenuItem});
+            this.методиПублікаційToolStripMenuItem,
+            this.спеціальностіToolStripMenuItem});
             this.toolStripButtonAdmin.Image = global::XAI_BIBLE.Properties.Resources.unnamed;
             this.toolStripButtonAdmin.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdmin.Name = "toolStripButtonAdmin";
@@ -351,6 +353,13 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
+            // спеціальностіToolStripMenuItem
+            // 
+            this.спеціальностіToolStripMenuItem.Name = "спеціальностіToolStripMenuItem";
+            this.спеціальностіToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.спеціальностіToolStripMenuItem.Text = "Спеціальності";
+            this.спеціальностіToolStripMenuItem.Click += new System.EventHandler(this.спеціальностіToolStripMenuItem_Click);
+            // 
             // Dataview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,5 +420,6 @@
         private System.Windows.Forms.ToolStripMenuItem мовиToolStripMenuItem;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.ToolStripMenuItem методиПублікаційToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem спеціальностіToolStripMenuItem;
     }
 }

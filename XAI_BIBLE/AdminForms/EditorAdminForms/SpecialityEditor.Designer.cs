@@ -34,8 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxInputName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxInputCode = new System.Windows.Forms.TextBox();
+            this.numericUpDownCodeSpec = new System.Windows.Forms.NumericUpDown();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCodeSpec)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -56,6 +57,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(83, 22);
             this.toolStripButton3.Text = "Скасувати";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // button1
             // 
@@ -68,6 +70,7 @@
             this.button1.TabIndex = 64;
             this.button1.Text = "Підтвердити";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseEnter += new System.EventHandler(this.button1_MouseEnter);
             this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
             // 
@@ -104,21 +107,24 @@
             this.label1.TabIndex = 62;
             this.label1.Text = "Назва cпеціальності:";
             // 
-            // textBoxInputCode
+            // numericUpDownCodeSpec
             // 
-            this.textBoxInputCode.Font = new System.Drawing.Font("Segoe UI Semibold", 12F);
-            this.textBoxInputCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.textBoxInputCode.Location = new System.Drawing.Point(40, 123);
-            this.textBoxInputCode.Name = "textBoxInputCode";
-            this.textBoxInputCode.Size = new System.Drawing.Size(256, 29);
-            this.textBoxInputCode.TabIndex = 65;
+            this.numericUpDownCodeSpec.Location = new System.Drawing.Point(40, 123);
+            this.numericUpDownCodeSpec.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownCodeSpec.Name = "numericUpDownCodeSpec";
+            this.numericUpDownCodeSpec.Size = new System.Drawing.Size(256, 20);
+            this.numericUpDownCodeSpec.TabIndex = 65;
             // 
             // SpecialityEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(330, 232);
-            this.Controls.Add(this.textBoxInputCode);
+            this.Controls.Add(this.numericUpDownCodeSpec);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -132,6 +138,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.SpecialityEditor_MouseMove);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCodeSpec)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,6 +152,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxInputName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxInputCode;
+        private System.Windows.Forms.NumericUpDown numericUpDownCodeSpec;
     }
 }

@@ -316,5 +316,12 @@ namespace XAI_BIBLE
             methodPublication.startFormByDataview(this);
             methodPublication.Show();
         }
+
+        private void спеціальностіToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Speciality speciality = new Speciality();
+            speciality.startFormByDataview(this);
+            speciality.Show();
+        }
     }
 }
